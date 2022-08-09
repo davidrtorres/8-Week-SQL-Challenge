@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 -- Date 8/9/22
 
+=======
+>>>>>>> b08e062d48ae154754331fe43194780e6bbc69ee
 CREATE DATABASE employee_data;
 USE employee_data;
 -- create tables
