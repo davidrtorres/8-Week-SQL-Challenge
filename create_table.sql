@@ -143,4 +143,58 @@ SELECT
 FROM employee_data.EmployeeDemographics
 WHERE Age >= 31
 GROUP BY Gender, Age
-ORDER BY row_count DESC;       
+ORDER BY row_count DESC;   
+
+/*
+Intermediate
+Join
+Unions
+Case Statements
+Updating Deleting Data
+Partition By
+Data types
+Aliasing
+Creating Views
+Having vs. Group By Statement
+GETDATE()
+Primary key vs. Foreign key
+
+Advanced
+CTEs
+SYS tables
+Subqueries
+Temp Tables
+String Functions (TRIM, LTRIM, RTRIM, Replace, Substring, Upper, Lower)
+Regular Expression
+Stored Procedures
+Importing data from diffrerent FILE types/sources
+
+*/
+-- Join- is a way to combine multiple tables into a single output
+-- have to join based on a similar column. Want it to be a unique field
+-- JOIN to create 1 output
+-- shows what's common between table A and table B
+SELECT * FROM EmployeeDemographics;
+-- INNER JOIN
+SELECT *
+FROM employee_data.EmployeeDemographics
+JOIN employee_data.EmployeeSalary
+	ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID;
+    
+-- Full outer Join   
+SELECT *
+FROM employee_data.EmployeeDemographics
+LEFT OUTER JOIN employee_data.EmployeeSalary
+	ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+UNION
+SELECT *
+FROM employee_data.EmployeeDemographics
+RIGHT OUTER JOIN employee_data.EmployeeSalary
+	ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID; 
+      
+-- Left outer join
+-- we want everything in the left table and overlapping, but if it's only in the right table we don't want it 
+SELECT *
+FROM employee_data.EmployeeDemographics
+LEFT JOIN employee_data.EmployeeSalary
+	ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID;    
