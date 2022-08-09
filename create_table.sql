@@ -1,3 +1,5 @@
+-- Date 8/9/22
+
 CREATE DATABASE employee_data;
 USE employee_data;
 -- create tables
