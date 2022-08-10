@@ -190,11 +190,85 @@ UNION
 SELECT *
 FROM employee_data.EmployeeDemographics
 RIGHT OUTER JOIN employee_data.EmployeeSalary
-	ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID; 
+	ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+ORDER BY Salary DESC;    
       
 -- Left outer join
--- we want everything in the left table and overlapping, but if it's only in the right table we don't want it 
-SELECT *
+-- we want everything in the left table and everything overlapping, but if it's only in the right table we don't want it 
+INSERT INTO EmployeeDemographics VALUES
+(1013,'John','Perdue',42, 'Male')
+
+SELECT * FROM EmployeeSalary;
+SELECT * FROM EmployeeDemographics;
+
+INSERT INTO EmployeeSalary VALUES
+(NULL, 'Human Resources',52000)
+
+-- there's no EmployeeID 1010,1011,1012 in EmployeeDemographics so the're exclude and all info related
+SELECT 
+	*
 FROM employee_data.EmployeeDemographics
 LEFT JOIN employee_data.EmployeeSalary
 	ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID;    
+
+-- RIGHT JOIN
+-- There's no EmployeeID 1010,1011, 1012 in EmployeeDemographics so it's Null
+SELECT 
+	*
+FROM employee_data.EmployeeDemographics
+RIGHT JOIN employee_data.EmployeeSalary
+	ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID;  
+    
+SELECT 
+	EmployeeSalary.EmployeeID,
+	EmployeeDemographics.FirstName,
+    EmployeeDemographics.LastNamr,
+    EmployeeSalary.Salary
+FROM employee_data.EmployeeDemographics
+RIGHT JOIN employee_data.EmployeeSalary
+	ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID;    
+
+SELECT * FROM EmployeeDemographics;
+-- 1001-1009, NULL,NULL,1013    
+SELECT 
+	EmployeeDemographics.EmployeeID,
+	EmployeeDemographics.FirstName,
+    EmployeeDemographics.LastNamr,
+    EmployeeSalary.Salary
+FROM employee_data.EmployeeDemographics
+LEFT JOIN employee_data.EmployeeSalary
+	ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID;   
+    
+-- pressure Michael Scott t oreach his quarterly quote  
+-- deduct pay for highest paid employee at his branch and himself
+-- idenitfy person that makes the most $
+SELECT 
+	EmployeeDemographics.EmployeeID,
+	EmployeeDemographics.FirstName,
+    EmployeeDemographics.LastNamr,
+    EmployeeSalary.Salary
+FROM employee_data.EmployeeDemographics
+INNER JOIN employee_data.EmployeeSalary
+	ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID 
+WHERE EmployeeDemographics.LastNamr != 'Scott'    
+ORDER BY EmployeeSalary.Salary DESC;    
+
+-- mistake when looking at the average salary for salesman
+-- calcuale average salary for salesman
+-- 'Salesman','52000.0000'
+
+SELECT
+	*
+FROM employee_data.EmployeeDemographics
+INNER JOIN employee_data.EmployeeSalary
+ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+
+SELECT
+		EmployeeSalary.JobTitle,
+        AVG(EmployeeSalary.Salary) AS average_salary
+FROM employee_data.EmployeeDemographics
+INNER JOIN employee_data.EmployeeSalary
+ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+WHERE JobTitle = 'Salesman'
+GROUP BY EmployeeSalary.JobTitle;
+		
