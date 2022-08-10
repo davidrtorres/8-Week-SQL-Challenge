@@ -271,4 +271,48 @@ INNER JOIN employee_data.EmployeeSalary
 ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
 WHERE JobTitle = 'Salesman'
 GROUP BY EmployeeSalary.JobTitle;
-		
+
+Create Table WareHouseEmployeeDemographics 
+(EmployeeID int, 
+FirstName varchar(50), 
+LastName varchar(50), 
+Age int, 
+Gender varchar(50)
+)
+
+Insert into WareHouseEmployeeDemographics VALUES
+(1013, 'Darryl', 'Philbin', NULL, 'Male'),
+(1050, 'Roy', 'Anderson', 31, 'Male'),
+(1051, 'Hidetoshi', 'Hasagawa', 40, 'Male'),
+(1052, 'Val', 'Johnson', 31, 'Female')
+
+
+/*
+UNION and JOIN are closely related
+THey're joining 2 tables to create 1 output
+JOIN-combines 2 tables off a common column
+
+UNION- able to select all the data from both tables and put into 1 output
+     you don't have to choose which table you're chossing it from.
+*/
+SELECT * FROM WareHouseEmployeeDemographics;
+SELECT *
+FROM employee_data.EmployeeDemographics
+RIGHT JOIN employee_data.WareHouseEmployeeDemographics
+ON EmployeeDemographics.EmployeeID = WareHouseEmployeeDemographics.EmployeeID; 	
+
+--
+-- UNION removes duplicates, like a DISTINCT statement
+SELECT *
+FROM employee_data.EmployeeDemographics
+UNION
+SELECT *
+FROM employee_data.WareHouseEmployeeDemographics;	
+
+SELECT *
+FROM employee_data.EmployeeDemographics
+UNION ALL
+SELECT *
+FROM employee_data.WareHouseEmployeeDemographics;	
+
+-- CASE Statements
