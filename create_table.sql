@@ -316,3 +316,73 @@ SELECT *
 FROM employee_data.WareHouseEmployeeDemographics;	
 
 -- CASE Statements
+-- allows you to specify condition, specify what you want returned when the condition is met
+-- it creates a new column
+SELECT * FROM employee_data.EmployeeDemographics;
+SELECT
+	FirstName,
+    LastNamr,
+    Age,
+CASE 
+	WHEN Age > 30 THEN 'Old'
+    WHEN Age BETWEEN 27 AND 30 THEN 'Young'
+    ELSE 'Baby'
+END    
+FROM employee_data.EmployeeDemographics
+WHERE Age IS NOT NULL
+ORDER BY Age;
+
+
+SELECT
+	FirstName,
+    LastNamr,
+    Age,
+CASE 
+	WHEN Age > 30 THEN 'Old'
+    WHEN Age = 38 THEN 'Stanley'
+    ELSE 'Baby'
+END    
+FROM employee_data.EmployeeDemographics
+WHERE Age IS NOT NULL
+ORDER BY Age;
+
+SELECT
+	FirstName,
+    LastNamr,
+    Age,
+CASE 
+	WHEN Age = 38 THEN 'Stanley' #need to put this condition here
+    WHEN Age > 30 THEN 'Old'
+    ELSE 'Baby'
+END    
+FROM employee_data.EmployeeDemographics
+WHERE Age IS NOT NULL
+ORDER BY Age;
+--
+-- not everyone is going to get the same raise
+-- Salesman get biggest raises 
+-- use when you want to categorize things or label things
+SELECT 
+		EmployeeDemographics.FirstName,
+        EmployeeDemographics.LastNamr,
+        EmployeeSalary.JobTitle,
+        EmployeeSalary.Salary,
+CASE 
+	WHEN JobTitle = 'Salesman' THEN Salary + (Salary * .10) -- 10% raise
+	WHEN JobTitle = 'Accountant' THEN Salary + (Salary * .05) -- 5% raise
+	WHEN JobTitle = 'HR' THEN Salary + (Salary * .000001) -- 5% raise
+    ELSE Salary + (Salary * .03) 
+END AS salary_after_raise
+FROM employee_data.EmployeeDemographics
+JOIN employee_data.EmployeeSalary
+ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID;
+
+
+
+
+
+
+
+
+
+
