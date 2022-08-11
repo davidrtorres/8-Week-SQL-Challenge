@@ -377,6 +377,67 @@ FROM employee_data.EmployeeDemographics
 JOIN employee_data.EmployeeSalary
 ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID;
 
+-----
+-- CASE Statement
+SELECT * FROM employee_data.EmployeeDemographics;
+SELECT 
+	EmployeeDemographics.FirstName,
+    EmployeeDemographics.LastNamr,
+    EmployeeDemographics.Age,
+    EmployeeSalary.Salary,
+CASE 
+	WHEN EmployeeDemographics.Age <= 15 THEN 'Baby'
+    WHEN EmployeeDemographics.Age BETWEEN 16 AND 30 THEN 'Middle'
+    ELSE 'Elderly'
+END AS age_category   
+FROM employee_data.EmployeeDemographics
+LEFT JOIN employee_data.EmployeeSalary
+ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID;
+
+-- Common Table Expression (CTE)
+-- Once you get out of query it doesn't exist
+-- CTE acts like a subquery
+WITH CTE_Employee AS (
+SELECT
+	FirstName,
+    LastNamr,
+    Gender,
+    Salary,
+    COUNT(Gender) OVER(PARTITION BY Gender) AS total_gender,
+    AVG(Salary) OVER(PARTITION BY Gender) AS AvgSalary
+    
+FROM employee_data.EmployeeDemographics
+JOIN employee_data.EmployeeSalary
+ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+WHERE Salary < 45000
+) 
+SELECT * FROM CTE_employee;
+
+
+-- Temporary Table
+-- can select all the data from a table and put it into a temp table.
+-- This reduces run time
+SELECT * FROM EmployeeSalary;
+
+DROP TABLE IF EXISTS temp_employee2
+CREATE TEMPORARY TABLE temp_employee2 (
+	JobTitle VARCHAR(50),
+    EmployeesPerJob INT,
+    AvgAge INT,
+    AvgSalary INT)
+    
+INSERT INTO temp_employee2
+SELECT
+	JobTitle,
+    COUNT(JobTitle),
+    AVG(Age),
+    AVG(Salary)
+FROM employee_data.EmployeeDemographics
+JOIN employee_data.EmployeeSalary
+ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+GROUP BY JobTitle;
+
+SELECT * FROM temp_employee2;
 
 
 
