@@ -1,5 +1,5 @@
 -- Danny's Diner Case Study Questions
-
+-- 8/9/22
 -- What is the total amount each customer spent at the restaurant?
 -- Customer A spent 76.00, Customer B spent 74.00 Customer c spent 36.00.
 SELECT * FROM dannys_diner.sales;
