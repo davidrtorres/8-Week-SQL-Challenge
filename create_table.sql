@@ -377,7 +377,7 @@ FROM employee_data.EmployeeDemographics
 JOIN employee_data.EmployeeSalary
 ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID;
 
------
+--
 -- CASE Statement
 SELECT * FROM employee_data.EmployeeDemographics;
 SELECT 
@@ -397,21 +397,38 @@ ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID;
 -- Common Table Expression (CTE)
 -- Once you get out of query it doesn't exist
 -- CTE acts like a subquery
+SELECT * FROM employee_data.EmployeeDemographics;
+
+WITH my_cte AS (
+
+
+
+
+)
+SELECT *
+	-- EmployeeDemographics.FirstName,
+	-- EmployeeDemographics.LastNamr,
+	-- EmployeeDemographics.Age
+	-- EmployeeSalary.Salary
+FROM employee_data.EmployeeDemographics
+)
+SELECT * FROM my_cte;
+
 WITH CTE_Employee AS (
 SELECT
-	FirstName,
-    LastNamr,
-    Gender,
-    Salary,
-    COUNT(Gender) OVER(PARTITION BY Gender) AS total_gender,
-    AVG(Salary) OVER(PARTITION BY Gender) AS AvgSalary
+	EmployeeDemographics.FirstName,
+    EmployeeDemographics.LastNamr,
+    EmployeeDemographics.Gender,
+    EmployeeSalary.Salary
+    -- COUNT(Gender) OVER(PARTITION BY Gender) AS TotalGender,
+    -- AVG(Salary) OVER(PARTITION BY Gender) AS AvgSalary
     
 FROM employee_data.EmployeeDemographics
 JOIN employee_data.EmployeeSalary
 ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
-WHERE Salary < 45000
+-- WHERE Salary < '45000'
 ) 
-SELECT * FROM CTE_employee;
+SELECT * FROM CTE_Employee;
 
 
 -- Temporary Table
