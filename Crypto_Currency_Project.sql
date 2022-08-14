@@ -34,12 +34,26 @@ FROM trading.members
 WHERE region NOT IN ('United States','Australia');
 
 -- How many mentors are there per region? Sort the output by regions with the most mentors to the least?
+-- There are 7 mentors in US, 4 in Australia, 1 in India, 1 in Africa and 1 in Asia.
 SELECT
 	region,
     COUNT(*) AS member_count 
 FROM trading.members
 GROUP BY region 
-ORDER BY member_count;
+ORDER BY member_count DESC;
+
+-- How many US mentors and non US mentors are there?
+-- There are 7 mentors from US and 7 not from the US.
+SELECT
+CASE 	
+	WHEN region = 'United States' Then 'US'
+    ELSE 'Other' 
+    END AS US_or_Non, 
+    COUNT(*) 
+FROM trading.members
+GROUP BY US_or_Non;
+
+
 
 
 
