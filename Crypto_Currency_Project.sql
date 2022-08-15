@@ -125,11 +125,11 @@ GROUP BY month_start
 ORDER BY month_start;
 
 -- Are there any duplicate market_date values for any ticker value in our table?
+-- No
 /*
 ticker	row_count	unique_count
 BTC	    1702	    1702
 ETH	    1702	    1702
-
 
 */
 SELECT
@@ -138,6 +138,30 @@ SELECT
     COUNT(DISTINCT market_date) AS unique_count
 FROM trading.prices
 GROUP BY ticker
+
+-- How many days from the trading.prices table exist where the high price of Bitcoin is over $30,000?
+-- 240 days high prcie over 30000.00
+SELECT
+	COUNT(high) AS more_than_300000
+FROM trading.prices
+WHERE ticker='BTC' AND
+	high > 30000.0
+    
+-- How many "breakout" days were there in 2020 where the price column is greater than the open column for each ticker?
+/*
+ticker	breakout_days
+BTC	    207
+ETH	    200
+
+
+*/
+SELECT
+	ticker,
+    SUM(CASE WHEN price > open THEN 1 ELSE 0 END) AS breakout_days
+FROM trading.prices
+WHERE EXTRACT(YEAR FROM market_date) = 2020
+GROUP BY ticker;
+ 
 
 
 
