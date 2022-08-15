@@ -124,6 +124,24 @@ WHERE EXTRACT(YEAR FROM market_date) = 2020
 GROUP BY month_start
 ORDER BY month_start;
 
+-- Are there any duplicate market_date values for any ticker value in our table?
+/*
+ticker	row_count	unique_count
+BTC	    1702	    1702
+ETH	    1702	    1702
+
+
+*/
+SELECT
+	ticker,
+    COUNT(*) AS row_count,
+    COUNT(DISTINCT market_date) AS unique_count
+FROM trading.prices
+GROUP BY ticker
+
+
+
+
 
 
 
