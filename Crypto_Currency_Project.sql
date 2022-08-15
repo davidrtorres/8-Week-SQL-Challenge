@@ -152,8 +152,6 @@ WHERE ticker='BTC' AND
 ticker	breakout_days
 BTC	    207
 ETH	    200
-
-
 */
 SELECT
 	ticker,
@@ -161,10 +159,88 @@ SELECT
 FROM trading.prices
 WHERE EXTRACT(YEAR FROM market_date) = 2020
 GROUP BY ticker;
- 
+-- How many "non_breakout" days were there in 2020 where the price column is less than the open column for each ticker?
+/*
+ticker	breakout_days
+BTC	    159
+ETH	    166
+*/
+SELECT
+	ticker,
+    SUM(CASE WHEN price < open THEN 1 ELSE 0 END) AS breakout_days
+FROM trading.prices
+WHERE market_date BETWEEN '2020_01_01' AND '2020_12_31'
+GROUP BY ticker;
+-- WHERE market_date >= '2020-01-01' AND market_date <= '2020-12-31'
+-- WHERE DATE_TRUNC('YEAR', market_date) = '2020-01-01'
 
+-- What percentage of days in 2020 were breakout days vs non-breakout days? Round the percentages to 2 decimal places
+-- "breakout" where the price column is greater than the open column
+/*
+ticker	breakout	non_breakout
+BTC	    0.57	    0.43
+ETH	    0.55	    0.45
 
+*/
+SELECT
+	ticker,
+    ROUND(SUM(CASE WHEN price > open THEN 1 ELSE 0 END) / COUNT(*)::NUMERIC, 2) AS breakout,
+    ROUND(SUM(CASE WHEN price < open THEN 1 ELSE 0 END)/ COUNT(*)::NUMERIC, 2) AS non_breakout
+FROM trading.prices
+WHERE market_date BETWEEN '2020_01_01' AND '2020_12_31'
+GROUP BY ticker;
 
+-- How many records are there in the trading.transactions table?
+-- There are 22918 records.
+SELECT 
+	COUNT(*) AS record_count
+FROM trading.transactions;
+
+-- How many unique transactions are there?
+-- There are 22918 unique transactions.
+SELECT COUNT(DISTINCT txn_id) FROM trading.transactions;
+
+-- How many buy and sell transactions are there for Bitcoin?
+/*
+txn_type	row_count
+BUY	        10440
+SELL	    2044
+*/
+SELECT
+	txn_type,
+    COUNT(*) AS row_count
+FROM trading.transactions
+WHERE ticker = 'BTC'
+GROUP BY txn_type;
+/*
+For each year, calculate the following buy and sell metrics for Bitcoin:
+total transaction count
+total quantity
+average quantity per transaction
+Also round the quantity columns to 2 decimal places.
+txn_year	txn_type	total_transactions	total_quantity	average_per_transaction
+2017	    BUY	        2261	            12069.58	    5.34
+2017	SELL	        419	                2160.22	        5.16
+2018	BUY	            2204	            11156.06	    5.06
+2018	SELL	        433	                2145.05	        4.95
+2019	BUY	            2192	            11114.43	    5.07
+2019	SELL	        443	                2316.24	        5.23
+2020	BUY	            2350	            11748.76	    5.00
+2020	SELL	        456	                2301.98	        5.05
+2021	BUY	            1433	
+
+*/
+SELECT
+  EXTRACT(YEAR FROM txn_date) AS txn_year,
+  -- need to cast approx. floats to exact numeric types for round!
+  txn_type,
+  COUNT(txn_id) AS total_transactions,
+  ROUND(SUM(quantity):: NUMERIC,2) AS total_quantity,
+  ROUND(AVG(quantity)::NUMERIC, 2) AS average_per_transaction
+FROM trading.transactions
+WHERE ticker = 'BTC'
+GROUP BY txn_year, txn_type
+ORDER BY txn_year ASC;
 
 
 
