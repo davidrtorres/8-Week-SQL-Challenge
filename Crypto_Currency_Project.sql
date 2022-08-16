@@ -324,7 +324,27 @@ SELECT
     btc_buy_quantity - btc_sell_quantity AS final_quantity_holding
 FROM final_quantity;    
      
+-- Which members have sold less than 500 Bitcoin? Sort the output from the most BTC sold to least
+/*
+member_id	total_sold
+8f14e4	    445.7438625475204
+eccbc8	    305.3454893552332
+45c48c	    198.131022250011
 
+*/
+WITH cte_sell_btc AS (
+SELECT
+	member_id,
+    SUM(quantity) AS total_sold
+FROM trading.transactions
+WHERE txn_type = 'SELL' and ticker='BTC'
+GROUP BY member_id
+)
+SELECT
+	*
+FROM cte_sell_btc
+WHERE total_sold < 500
+ORDER BY total_sold DESC;
 
 
 
