@@ -242,6 +242,65 @@ WHERE ticker = 'BTC'
 GROUP BY txn_year, txn_type
 ORDER BY txn_year ASC;
 
+-- What was the monthly total quantity purchased and sold for Ethereum in 2020?
+/*
+2020-03-01T00:00:00.000Z	SELL	182.19
+2020-04-01T00:00:00.000Z	BUY	    761.87
+2020-04-01T00:00:00.000Z	SELL	203.17
+2020-05-01T00:00:00.000Z	BUY	    787.42
+2020-05-01T00:00:00.000Z	SELL	149.08
+2020-06-01T00:00:00.000Z	BUY	    787.47
+2020-06-01T00:00:00.000Z	SELL	208.34
+2020-07-01T00:00:00.000Z	BUY	    890.78
+2020-07-01T00:00:00.000Z	SELL	117.02
+
+calendar_month	            buy_quantity	    sell_quantity
+2020-01-01T00:00:00.000Z	801.0541163041565	158.1272716986775
+2020-02-01T00:00:00.000Z	687.8912804600265	160.06533517839912
+2020-03-01T00:00:00.000Z	804.2368342042604	182.1895644691428
+2020-04-01T00:00:00.000Z	761.87446914631
+*/
+
+SELECT
+	DATE_TRUNC('MON', txn_date) AS month_start,
+    txn_type,
+    ROUND(SUM(quantity)::NUMERIC, 2) AS total_monthly_quantity
+FROM trading.transactions
+WHERE ticker='ETH' AND EXTRACT(YEAR FROM txn_date) = 2020
+GROUP BY month_start, txn_type;
+
+SELECT
+  DATE_TRUNC('MON', txn_date)::DATE AS calendar_month,
+  SUM(CASE WHEN txn_type = 'BUY' THEN quantity ELSE 0 END) AS buy_quantity,
+  SUM(CASE WHEN txn_type = 'SELL' THEN quantity ELSE 0 END) AS sell_quantity
+FROM trading.transactions
+WHERE txn_date BETWEEN '2020-01-01' AND '2020-12-31'
+  AND ticker = 'ETH'
+GROUP BY calendar_month
+ORDER BY calendar_month;
+/*
+Summarise all buy and sell transactions for each member_id by generating 1 row for each member with the following additional columns:
+Bitcoin buy quantity
+Bitcoin sell quantity
+Ethereum buy quantity
+Ethereum sell quantity
+
+member_id	btc_buy_quantity	btc_sell_quantity	eth_buy_quantity	eth_sell_quantity
+c20ad4	    4975.750641191644	929.659744519077	2187.1154401373137	610.0470610814083
+c51ce4	    2580.4064599247727	1028.7200828179675	2394.7300314796344	1076.700582569547
+c4ca42	    4380.44293157246	1075.5626055691553	4516.597248410067	1011.5619313973
+
+*/
+
+SELECT
+  member_id,
+  SUM(CASE WHEN ticker= 'BTC' AND txn_type = 'BUY' THEN quantity ELSE 0 END) AS    			btc_buy_quantity,
+  SUM(CASE WHEN ticker= 'BTC' AND txn_type = 'SELL' THEN quantity ELSE 0 END) AS 			btc_sell_quantity,
+  SUM(CASE WHEN ticker= 'ETH' AND txn_type = 'BUY' THEN quantity ELSE 0 END) AS 			eth_buy_quantity,
+  SUM(CASE WHEN ticker= 'ETH' AND txn_type = 'SELL' THEN quantity ELSE 0 END) AS 			eth_sell_quantity
+FROM trading.transactions
+GROUP BY member_id;
+
 
 
 
