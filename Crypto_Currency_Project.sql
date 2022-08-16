@@ -301,6 +301,32 @@ SELECT
 FROM trading.transactions
 GROUP BY member_id;
 
+-- What was the final quantity holding of Bitcoin for each member? Sort the output from the highest BTC holding to lowest
+/*
+member_id	final_quantity_holding
+e4da3b	    2569.0097117919145
+45c48c	    3616.1114466881636
+6512bd	    3456.9097800695927
+c81e72	    1626.8358527114056
+*/
+WITH final_quantity AS ( 
+SELECT
+	member_id,
+    SUM(CASE WHEN txn_type = 'BUY' THEN quantity ELSE 0 END) AS btc_buy_quantity,
+    SUM(CASE WHEN txn_type = 'SELL' THEN quantity ELSE 0 END) AS btc_sell_quantity
+    
+FROM trading.transactions
+WHERE ticker='BTC'
+GROUP BY member_id
+)
+SELECT
+	member_id,
+    btc_buy_quantity - btc_sell_quantity AS final_quantity_holding
+FROM final_quantity;    
+     
+
+
+
 
 
 
