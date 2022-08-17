@@ -469,6 +469,24 @@ GROUP BY members.first_name
 ORDER BY total_quantity DESC
 LIMIT 3;
 
+-- What is total value of all Ethereum portfolios for each region at the end date of our analysis? Order the output by descending portfolio value
+SELECT
+	region,
+    SUM(
+    CASE
+      WHEN transactions.txn_type = 'BUY'  THEN transactions.quantity
+      WHEN transactions.txn_type = 'SELL' THEN -transactions.quantity
+    END
+  ) AS total_quantity
+FROM trading.members
+INNER JOIN trading.transactions
+ON members.member_id = transactions.member_id
+INNER JOIN trading.prices
+ON transactions.ticker = prices.ticker
+WHERE prices.ticker = 'ETH'
+GROUP BY region
+
+
 
 
 
