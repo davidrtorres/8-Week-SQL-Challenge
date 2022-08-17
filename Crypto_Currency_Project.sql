@@ -424,6 +424,54 @@ FROM cte_ranked
 WHERE month_rank = 1
 ORDER BY sold_eth_quantity DESC;
 
+-- What is the earliest and latest date of transactions for all members?
+/*
+min_date	                max_date
+2017-01-01T00:00:00.000Z	2021-08-27T00:00:00.000Z
+*/
+SELECT
+	MIN(txn_date) AS min_date,
+    MAX(txn_date) AS max_date
+FROM trading.transactions;  
+
+-- What is the range of market_date values available in the prices data? 
+/*
+min_date	                max_date
+2017-01-01T00:00:00.000Z	2021-08-29T00:00:00.000Z
+*/
+SELECT
+	MIN(market_date) AS min_date,
+    MAX(market_date) AS max_date
+FROM trading.prices;  
+
+-- Which top 3 mentors have the most Bitcoin quantity as of the 29th of August? 
+/*
+first_name	total_quantity
+Nandita	    4160.219869506644
+Leah	    4046.0908966725606
+Ayush	    3945.198083260507
+
+*/
+
+SELECT 
+	members.first_name,
+    SUM(
+    CASE
+      WHEN transactions.txn_type = 'BUY'  THEN transactions.quantity
+      WHEN transactions.txn_type = 'SELL' THEN -transactions.quantity
+    END
+  ) AS total_quantity
+FROM trading.transactions
+INNER JOIN trading.members
+ON transactions.member_id = members.member_id
+WHERE transactions.ticker='BTC'
+GROUP BY members.first_name
+ORDER BY total_quantity DESC
+LIMIT 3;
+
+
+
+
 
 
 
