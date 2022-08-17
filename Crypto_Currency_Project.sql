@@ -347,10 +347,82 @@ WHERE total_sold < 500
 ORDER BY total_sold DESC;
 
 
+--  What is the total Bitcoin quantity for each member_id owns after adding all of the BUY and SELL transactions from the transactions table? 
+-- Sort the output by descending total quantity
+/*
+member_id	total_btc_holding
+a87ff6	    4160.219869506643
+c20ad4	    4046.090896672561
+167909	    3945.198083260507
+c9f0f8	    3720.5162047540916
+45c48c	    3616.1114466881622
+d3d944	    3534.985160169097
+6512bd	    3456.9097800695936
 
+*/
+SELECT
+	member_id,
+    SUM(
+    CASE
+      WHEN txn_type = 'BUY' THEN quantity
+      WHEN txn_type = 'SELL' THEN -quantity
+      ELSE 0
+    END
+  ) AS total_btc_holding
+    
+FROM trading.transactions
+WHERE ticker='BTC'
+GROUP BY member_id
+ORDER BY total_btc_holding DESC;
 
+-- Which member_id has the highest buy to sell ratio by quantity?
+/*
+member_id	buy_to_sell_ratio
+45c48c	    19.912698711113308
+a87ff6	    7.486010484765202
+c9f0f8	    6.249914187095622
+8f14e4	    5.300053224554441
+eccbc8	    4.928502329467622
+c20ad4	    4.652097435222711
 
+*/
+SELECT
+  member_id,
+  SUM(CASE WHEN txn_type = 'BUY' THEN quantity ELSE 0 END) /
+    SUM(CASE WHEN txn_type = 'SELL' THEN quantity ELSE 0 END) AS buy_to_sell_ratio
+FROM trading.transactions
+GROUP BY member_id
+ORDER BY buy_to_sell_ratio DESC;
 
+-- For each member_id - which month had the highest total Ethereum quantity sold`?
+/*
+member_id	calendar_month	            sold_eth_quantity
+c51ce4	    2017-05-01T00:00:00.000Z	66.09244042953502
+d3d944	    2020-04-01T00:00:00.000Z	60.41736997398335
+6512bd	    2018-05-01T00:00:00.000Z	47.932857149515904
+167909	    2020-12-01T00:00:00.000Z	45.92423664055218
+c81e72	    2018-08-01T00:00:00.000Z	41.26728177476413
+aab323	    2018-09-01T00:00:00.000Z	41.175076337098375
+c4ca42	    2021-04-01T00:00:00.000Z.   40.11347472402258
+
+*/
+WITH cte_ranked AS (
+SELECT
+  member_id,
+  DATE_TRUNC('MON', txn_date)::DATE AS calendar_month,
+  SUM(quantity) AS sold_eth_quantity,
+  RANK() OVER (PARTITION BY member_id ORDER BY SUM(quantity) DESC) AS month_rank
+FROM trading.transactions
+WHERE ticker = 'ETH' AND txn_type = 'SELL'
+GROUP BY member_id, calendar_month
+)
+SELECT
+  member_id,
+  calendar_month,
+  sold_eth_quantity
+FROM cte_ranked
+WHERE month_rank = 1
+ORDER BY sold_eth_quantity DESC;
 
 
 
