@@ -400,11 +400,16 @@ ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID;
 SELECT * FROM employee_data.EmployeeDemographics;
 
 WITH my_cte AS (
-
-
-
-
+SELECT *
+FROM employee_data.EmployeeDemographics
 )
+SELECT 
+	FirstName
+FROM my_cte;    
+
+
+
+
 SELECT *
 	-- EmployeeDemographics.FirstName,
 	-- EmployeeDemographics.LastNamr,
@@ -455,6 +460,11 @@ ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
 GROUP BY JobTitle;
 
 SELECT * FROM temp_employee2;
+
+/*
+
+
+*/
 
 
 
