@@ -470,23 +470,81 @@ ORDER BY total_quantity DESC
 LIMIT 3;
 
 -- What is total value of all Ethereum portfolios for each region at the end date of our analysis? Order the output by descending portfolio value
+/*
+region	       ethereum_value	    avg_ethereum_value
+Australia	   40076021.09227076	10752.89001670801
+United States. 50688412.27725327	10549.097248127631
+Asia	       5011670.977699018	8933.459853295932
+India	       6276426.4827863695	8036.397545181011
+Africa	       2183933.3382704277	3899.8809611971915
+*/
+WITH cte_latest_price AS (
+  SELECT
+    ticker,
+    price
+  FROM trading.prices
+  WHERE ticker = 'ETH'
+  AND market_date = '2021-08-29'
+)
 SELECT
-	region,
-    SUM(
+  members.region,
+  SUM(
     CASE
       WHEN transactions.txn_type = 'BUY'  THEN transactions.quantity
       WHEN transactions.txn_type = 'SELL' THEN -transactions.quantity
     END
-  ) AS total_quantity
-FROM trading.members
-INNER JOIN trading.transactions
-ON members.member_id = transactions.member_id
-INNER JOIN trading.prices
-ON transactions.ticker = prices.ticker
-WHERE prices.ticker = 'ETH'
-GROUP BY region
+  ) * cte_latest_price.price AS ethereum_value,
+  AVG(
+    CASE
+      WHEN transactions.txn_type = 'BUY'  THEN transactions.quantity
+      WHEN transactions.txn_type = 'SELL' THEN -transactions.quantity
+    END
+  ) * cte_latest_price.price AS avg_ethereum_value
+FROM trading.transactions
+INNER JOIN cte_latest_price
+  ON transactions.ticker = cte_latest_price.ticker
+INNER JOIN trading.members
+  ON transactions.member_id = members.member_id
+WHERE transactions.ticker = 'ETH'
+GROUP BY members.region, cte_latest_price.price
+ORDER BY avg_ethereum_value DESC;
 
+-- What is the average value of each Ethereum portfolio in each region? Sort this output in descending order
+/*
+region	      avg_ethereum_value
+Australia	  10752.89001670801
+United States 10549.097248127631
+Asia	      8933.459853295932
+India	      8036.397545181011
+Africa	      3899.8809611971915
 
+*/
+WITH cte_latest_price AS (
+  SELECT
+    ticker,
+    price,
+  	market_date
+  FROM trading.prices
+  WHERE ticker = 'ETH'
+  AND market_date = '2021-08-29'
+)
+SELECT
+  members.region,
+  
+  AVG(
+    CASE
+      WHEN transactions.txn_type = 'BUY'  THEN transactions.quantity
+      WHEN transactions.txn_type = 'SELL' THEN -transactions.quantity
+    END
+  ) * cte_latest_price.price AS avg_ethereum_value
+FROM trading.transactions
+INNER JOIN cte_latest_price
+  ON transactions.ticker = cte_latest_price.ticker
+INNER JOIN trading.members
+  ON transactions.member_id = members.member_id
+-- WHERE transactions.ticker = 'ETH'
+GROUP BY members.region, cte_latest_price.price
+ORDER BY avg_ethereum_value DESC;
 
 
 
