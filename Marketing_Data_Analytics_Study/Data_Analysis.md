@@ -1,7 +1,7 @@
 # Data Analysis
 
 We're working with several tables which need to be joined.  Here is the code using INNER JOIN to join the 5 tables.
-'''
+```
 DROP TABLE IF EXISTS complete_joint_dataset;
 CREATE TEMP TABLE complete_joint_dataset AS
 SELECT
@@ -21,4 +21,4 @@ INNER JOIN dvd_rentals.category
   ON film_category.category_id = category.category_id;
 
 SELECT * FROM complete_joint_dataset limit 10;
-'''
+```
