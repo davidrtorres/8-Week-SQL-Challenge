@@ -29,7 +29,8 @@ Output
 <br>
 <br>
 
-What is the total rental count for customer_id=1 for each category.  I will limit the output to the top 5 catgories.  We can see that for customer_id=1 the top 5 categories were Classics, Comedy, Drama, Sports and Action.  Classics was the largest with 6 rentals.  I also included the MAX() function which is used as a sort valuyes which are of equal value.  In this case both Sports and Action have a value of 2, with MAX() we are able to see which rental_date is the more recent value.  
+### What is the total rental count for customer_id=1 for each category?  
+I will limit the output to the top 5 catgories.  We can see that for customer_id=1 the top 5 categories were Classics, Comedy, Drama, Sports and Action.  Classics was the largest with 6 rentals.  I also included the MAX() function which is used as a sort valuyes which are of equal value.  In this case both Sports and Action have a value of 2, with MAX() we are able to see which rental_date is the more recent value.  
 ```
 DROP TABLE IF EXISTS category_rental_counts;
 CREATE TEMP TABLE category_rental_counts AS
