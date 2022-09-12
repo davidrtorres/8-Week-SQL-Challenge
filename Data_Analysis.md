@@ -1,3 +1,3 @@
 
-#. Marketing Analytics Case Study
+# Marketing Analytics Case Study
 
