@@ -20,5 +20,5 @@ INNER JOIN dvd_rentals.film_category
 INNER JOIN dvd_rentals.category
   ON film_category.category_id = category.category_id;
 
-SELECT * FROM complete_joint_dataset limit 10;
+SELECT * FROM complete_joint_dataset limit 5;
 ```
