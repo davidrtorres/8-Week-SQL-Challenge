@@ -22,3 +22,4 @@ INNER JOIN dvd_rentals.category
 
 SELECT * FROM complete_joint_dataset limit 5;
 ```
+Output
