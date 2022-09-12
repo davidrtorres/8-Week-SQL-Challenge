@@ -29,7 +29,7 @@ Output
 <br>
 <br>
 
-What is the total rental count for customer_id=1 for each category.  I will limited the output for the top 5. 
+What is the total rental count for customer_id=1 for each category.  I will limit the output to the top 5 catgories.  We can see that for customer_id=1 the top 5 categories were Classics, Comedy, Drama, Sports and Action.   
 ```
 DROP TABLE IF EXISTS category_rental_counts;
 CREATE TEMP TABLE category_rental_counts AS
