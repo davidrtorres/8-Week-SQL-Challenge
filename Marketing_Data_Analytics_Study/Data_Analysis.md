@@ -25,7 +25,8 @@ SELECT * FROM complete_joint_dataset limit 5;
 Output<br>
 ![My Image](images/join_tables.png)
 -------
-
+<br>
+<br>
 
 What is the total rental count for customer_id=1 for each category.  I will limited the output for the top 5. 
 ```
