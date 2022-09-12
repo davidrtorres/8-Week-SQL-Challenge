@@ -24,3 +24,4 @@ SELECT * FROM complete_joint_dataset limit 5;
 ```
 Output
 ![My Image](images/join_tables.png)
+oo
