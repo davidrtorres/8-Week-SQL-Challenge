@@ -22,6 +22,30 @@ INNER JOIN dvd_rentals.category
 
 SELECT * FROM complete_joint_dataset limit 5;
 ```
-Output<br>
-![My Image](../images/Marketing_Data_Analytics_Study/join_tables.png)
+Output
 
+![My Image](images/join_tables.png)
+-------
+<br>
+<br>
+
+What is the total rental count for customer_id=1 for each category.  I will limited the output for the top 5. 
+```
+DROP TABLE IF EXISTS category_rental_counts;
+CREATE TEMP TABLE category_rental_counts AS
+SELECT
+  customer_id,
+  category_name,
+  COUNT(*) AS rental_count,
+  MAX(rental_date) AS latest_rental_date
+FROM complete_joint_dataset
+GROUP BY customer_id,
+         category_name;
+
+SELECT 
+  *
+FROM category_rental_counts
+ORDER BY customer_id, rental_count DESC
+LIMIT 5;
+```
+Output
