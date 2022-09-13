@@ -54,6 +54,20 @@ Output
 
 ### What is the average rental count for each category?
 ```
+DROP TABLE IF EXISTS average_category_rental_counts;
+CREATE TEMP TABLE average_category_rental_counts AS
+SELECT
+  customer_id,
+  category_name,
+  COUNT(*) AS rental_count
+FROM complete_joint_dataset
+GROUP BY customer_id, category_name;
 
-
+SELECT
+  category_name,
+  ROUND(AVG(rental_count),2) AS avg_rental_count
+FROM average_category_rental_counts
+GROUP BY category_name
+ORDER BY category_name;
 ```
+Output
