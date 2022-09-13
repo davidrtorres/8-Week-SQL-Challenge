@@ -110,7 +110,7 @@ Output<br>
 
 -----
 ### What is percentile value of rentals for customer 1 when compared to other customers?
-Above is a table for the average number for each category for all customers.  The average number of rental for Comedy was 1.90.  
+Above is a table for the average number for each category for all customers.  The average number of rental for Comedy was 1.90.  Customer 1 had 5 rentals for the Comedy category which put him in the 1% of all customers for this category. 
 ```
 DROP TABLE IF EXISTS category_rental_counts;
 CREATE TEMP TABLE category_rental_counts AS
