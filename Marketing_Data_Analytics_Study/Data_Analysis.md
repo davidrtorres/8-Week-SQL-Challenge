@@ -71,7 +71,7 @@ GROUP BY category_name
 ORDER BY category_name;
 ```
 Output<br>
-<img src="images/avg_rental_count.png" alt="Employee data" width="50" height="60">
+<img src="images/avg_rental_count.png" alt="Employee data" width="150" height="160">
 
 
 
