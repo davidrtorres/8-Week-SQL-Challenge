@@ -50,10 +50,11 @@ ORDER BY customer_id, rental_count DESC
 LIMIT 5;
 ```
 Output
+
 ![My Image](images/cat_rental_count.png)
 -----
 
-### What is the total rental count for customer ids 1 -5?
+### What is the total rental count for customer ids 1 - 5?
 ```
 DROP TABLE IF EXISTS category_rental_counts;
 CREATE TEMP TABLE category_rental_counts AS
@@ -81,8 +82,11 @@ WHERE customer_id <=5
 ORDER BY customer_id;
 
 ```
+Output<br>
+<img src="images/5_rental_count.png" alt="Employee data" width="300" height="200">
 
 
+--------
 ### What is the average rental count for each category?
 ```
 DROP TABLE IF EXISTS average_category_rental_counts;
@@ -105,3 +109,40 @@ Output<br>
 <img src="images/avg_rental_count.png" alt="Employee data" width="300" height="260">
 
 -----
+### What is percentile value for customer 1 when compared to other customers?
+```
+DROP TABLE IF EXISTS category_rental_counts;
+CREATE TEMP TABLE category_rental_counts AS
+SELECT
+  customer_id,
+  category_name,
+  COUNT(*) AS rental_count,
+  MAX(rental_date) AS latest_rental_date
+FROM complete_joint_dataset
+GROUP BY customer_id,
+         category_name;
+
+DROP TABLE IF EXISTS customer_category_percentiles;
+CREATE TEMP TABLE customer_category_percentiles AS
+SELECT 
+  customer_id,
+  category_name,
+  rental_count,
+  -- use ceiling to round up to nearest integer after multiplying by 100
+  CEILING(
+  100 * PERCENT_RANK() OVER (
+    PARTITION BY category_name
+    ORDER BY rental_count DESC
+    )
+  ) AS percentile
+FROM category_rental_counts;
+
+SELECT
+  *
+FROM customer_category_percentiles
+WHERE customer_id =1
+ORDER BY customer_id, percentile
+LIMIT 5;
+
+```
+Output
