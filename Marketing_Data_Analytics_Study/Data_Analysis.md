@@ -53,7 +53,7 @@ Output
 ![My Image](images/cat_rental_count.png)
 -----
 
-### What is the total rental count for customer ids 1 -5?
+### What is the total rental count for customer ids 1 - 5?
 ```
 DROP TABLE IF EXISTS category_rental_counts;
 CREATE TEMP TABLE category_rental_counts AS
