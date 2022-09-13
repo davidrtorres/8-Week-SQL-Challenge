@@ -55,6 +55,7 @@ Output
 -----
 
 ### What is the total rental count for customer ids 1 - 5?
+The customer_id=1 rented 32 dvds and customer_id=2 rented 27 dvds.
 ```
 DROP TABLE IF EXISTS category_rental_counts;
 CREATE TEMP TABLE category_rental_counts AS
