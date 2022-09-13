@@ -82,8 +82,8 @@ ORDER BY customer_id;
 
 ```
 Output<br>
+<img src="images/5_rental_count.png" alt="Employee data" width="300" height="200">
 
-![My Image](images/5_rental_count.png)
 
 --------
 ### What is the average rental count for each category?
