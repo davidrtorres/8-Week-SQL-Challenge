@@ -73,3 +73,4 @@ ORDER BY category_name;
 Output
 
 ![image_avg](images/avg_rental_count.png)
+-----
