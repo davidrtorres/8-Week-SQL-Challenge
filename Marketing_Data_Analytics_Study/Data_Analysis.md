@@ -73,6 +73,4 @@ ORDER BY category_name;
 Output<br>
 <img src="images/avg_rental_count.png" alt="Employee data" width="300" height="260">
 
-
-
 -----
