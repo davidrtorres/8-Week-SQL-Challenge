@@ -71,7 +71,7 @@ GROUP BY category_name
 ORDER BY category_name;
 ```
 Output<br>
-![My Image](images/cat_rental_count.png)
+![My Image](images/avg_rental_count.png)
 
 
 
