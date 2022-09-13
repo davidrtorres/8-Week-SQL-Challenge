@@ -81,8 +81,10 @@ WHERE customer_id <=5
 ORDER BY customer_id;
 
 ```
+Output
+![My Image](images/5_rental_count.png)
 
-
+--------
 ### What is the average rental count for each category?
 ```
 DROP TABLE IF EXISTS average_category_rental_counts;
