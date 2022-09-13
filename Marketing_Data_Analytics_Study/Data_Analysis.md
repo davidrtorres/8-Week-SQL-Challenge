@@ -51,3 +51,9 @@ LIMIT 5;
 ```
 Output
 ![My Image](images/cat_rental_count.png)
+
+### What is the average rental count for each category?
+```
+
+
+```
