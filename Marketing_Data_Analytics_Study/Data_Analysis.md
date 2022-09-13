@@ -146,4 +146,4 @@ LIMIT 5;
 
 ```
 Output
-![My Image](images/percentiles.png)
+![My Image](images/percentile.png)
