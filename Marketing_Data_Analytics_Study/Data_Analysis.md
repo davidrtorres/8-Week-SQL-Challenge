@@ -71,4 +71,5 @@ GROUP BY category_name
 ORDER BY category_name;
 ```
 Output
+
 ![My Image](images/avg_rental_count.png)
