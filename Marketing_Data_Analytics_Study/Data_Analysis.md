@@ -50,6 +50,7 @@ ORDER BY customer_id, rental_count DESC
 LIMIT 5;
 ```
 Output
+
 ![My Image](images/cat_rental_count.png)
 -----
 
