@@ -109,7 +109,7 @@ Output<br>
 <img src="images/avg_rental_count.png" alt="Employee data" width="300" height="260">
 
 -----
-### What is percentile value for customer 1 when compared to other customers?
+### What is percentile value of rentals for customer 1 when compared to other customers?
 ```
 DROP TABLE IF EXISTS category_rental_counts;
 CREATE TEMP TABLE category_rental_counts AS
