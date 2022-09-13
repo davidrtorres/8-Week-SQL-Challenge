@@ -81,7 +81,8 @@ WHERE customer_id <=5
 ORDER BY customer_id;
 
 ```
-Output
+Output<br>
+
 ![My Image](images/5_rental_count.png)
 
 --------
