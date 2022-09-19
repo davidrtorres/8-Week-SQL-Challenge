@@ -32,3 +32,11 @@ SELECT
   ROUND(AVG(measure_count),2) AS average_value
 FROM user_measure_count
 ```
+#### Question 3: What is the median number of the total measurements per user?
+The median number is 2.
+```
+SELECT
+  PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY measure_count) AS median_value
+FROM user_measure_count;
+
+```
