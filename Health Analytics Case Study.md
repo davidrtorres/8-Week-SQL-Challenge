@@ -13,3 +13,5 @@ SELECT
 FROM health.user_logs 
 GROUP BY id);
 ```
+Output
+<img src="images/health_data.png/" alt="Employee data" width="300" height="260">
