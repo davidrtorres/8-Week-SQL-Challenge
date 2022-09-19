@@ -25,3 +25,10 @@ SELECT
   COUNT(DISTINCT id)
 FROM user_measure_count;  
 ```
+#### Question 2: How many total measurements do we have per user on averge?
+There are an average of 79.23 measurements per user
+```
+SELECT
+  ROUND(AVG(measure_count),2) AS average_value
+FROM user_measure_count
+```
