@@ -16,3 +16,5 @@ GROUP BY id);
 Output
 
 <img src="images/health_data.png/" alt="Employee data">
+
+------
