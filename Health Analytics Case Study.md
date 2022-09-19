@@ -18,4 +18,10 @@ Output
 <img src="images/health_data.png/" alt="Employee data">
 
 ------
-#### Question
+#### Question 1: How many unique users exist in the logs dataset?
+There are 554 unique users in the user_logs table.
+```
+SELECT
+  COUNT(DISTINCT id)
+FROM user_measure_count;  
+```
