@@ -1,7 +1,7 @@
 # Health Analytics Case Study
 
 
-### For Question 2-7 I created a temporary table
+For Question 2-7 I created a temporary table
 ```
 DROP TABLE IF EXISTS user_measure_count;
 
