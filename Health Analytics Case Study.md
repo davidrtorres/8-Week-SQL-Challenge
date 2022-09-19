@@ -13,3 +13,4 @@ SELECT
 FROM health.user_logs 
 GROUP BY id);
 ```
+Output
