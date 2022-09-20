@@ -78,7 +78,7 @@ WHERE measure = 'blood_glucose'
 ```
 ----------
 #### Question 7: How many users have logged at least 2 types measurements?
-Out of 554 users 204 have at least 2 types of measurements.
+Out of 554 users 204 have logged at least 2 types of measurements.
 ```
 SELECT
   COUNT(*)
@@ -87,10 +87,22 @@ WHERE unique_measure_count >= 2
 ```
 -------
 #### Question 8: How many users have logged all 3 measurements - blood glucose, weight and blood pressure?
-
+Out of 554 users 50 have logged all 3 measurements.
 '''
 SELECT 
   COUNT(id)
 FROM user_measure_count
 WHERE unique_measure_count = 3
 '''
+-------
+#### Question 9: What are the median systolic/diastolic blood pressure values?
+```
+SELECT
+  measure,
+  PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY systolic) AS systolic_median_value,
+  PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY diastolic) AS diastolic_median_value
+FROM health.user_logs
+WHERE measure = 'blood_pressure'
+GROUP BY measure 
+```
+<img src="images/diastolic_systolic.png/" alt="Employee data">
