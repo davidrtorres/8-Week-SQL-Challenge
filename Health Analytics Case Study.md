@@ -77,3 +77,11 @@ FROM my_sample
 WHERE measure = 'blood_glucose'
 ```
 ----------
+#### Question 7: How many users have logged at least 2 types measurements?
+Out of 554 users 204 have at least 2 types of measurements.
+```
+SELECT
+  COUNT(*)
+FROM user_measure_count
+WHERE unique_measure_count >= 2
+```
