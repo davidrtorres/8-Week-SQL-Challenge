@@ -108,6 +108,6 @@ GROUP BY measure;
 ```
 Output
 <br>
-![My Image](images/diastolic_systolic.png/Health Analytics Case Study.md)
+![My Image](SQL_code/images/diastolic_systolic.png)
 
 
