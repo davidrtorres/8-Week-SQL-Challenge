@@ -88,12 +88,12 @@ WHERE unique_measure_count >= 2
 -------
 #### Question 8: How many users have logged all 3 measurements - blood glucose, weight and blood pressure?
 Out of 554 users 50 have logged all 3 measurements.
-'''
+```
 SELECT 
   COUNT(id)
 FROM user_measure_count
 WHERE unique_measure_count = 3
-'''
+```
 -------
 #### Question 9: What are the median systolic/diastolic blood pressure values?
 ```
