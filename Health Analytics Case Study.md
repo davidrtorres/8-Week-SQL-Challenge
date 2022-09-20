@@ -96,7 +96,7 @@ WHERE unique_measure_count = 3;
 ```
 -------
 #### Question 9: What are the median systolic/diastolic blood pressure values?
-vbv
+
 ```
 SELECT
   measure,
@@ -106,7 +106,8 @@ FROM health.user_logs
 WHERE measure = 'blood_pressure'
 GROUP BY measure; 
 ```
-Output<br>
+Output
+
 <img src="images/diastolic_systolic.png/" alt="Employee data">
-c
------
+
+
