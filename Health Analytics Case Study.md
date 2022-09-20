@@ -105,4 +105,5 @@ FROM health.user_logs
 WHERE measure = 'blood_pressure'
 GROUP BY measure 
 ```
+
 <img src="images/diastolic_systolic.png/" alt="Employee data">
