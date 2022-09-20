@@ -96,6 +96,7 @@ WHERE unique_measure_count = 3;
 ```
 -------
 #### Question 9: What are the median systolic/diastolic blood pressure values?
+vbv
 ```
 SELECT
   measure,
