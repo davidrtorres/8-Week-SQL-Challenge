@@ -62,7 +62,7 @@ WHERE measure_count > 1000
 -------
 #### Question 6: How many users and percentage have logged blood glucose measurements?
 There are 325 users which is 40.22% of users that have logged blood glucose measurements.
-``
+```
 WITH my_sample AS (
 SELECT
   measure,
