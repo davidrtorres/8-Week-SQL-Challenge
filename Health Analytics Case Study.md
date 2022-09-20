@@ -49,3 +49,16 @@ SELECT
 FROM user_measure_count 
 WHERE measure_count >= 3;
 ```
+-----
+#### Question 5: How many users have 1000 or more measurements?
+5 users have 5 or more measurements.
+```
+SELECT
+  COUNT(DISTINCT id) 
+FROM user_measure_count 
+WHERE measure_count > 1000 
+
+```
+-------
+
+
