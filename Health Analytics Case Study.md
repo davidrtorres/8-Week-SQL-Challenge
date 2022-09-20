@@ -60,5 +60,19 @@ WHERE measure_count > 1000
 
 ```
 -------
-
-
+#### Question 6: How many users and percentage have logged blood glucose measurements?
+There are 325 users which is 40.22% of users that have logged blood glucose measurements.
+``
+WITH my_sample AS (
+SELECT
+  measure,
+  COUNT(DISTINCT id) AS freq,
+  ROUND(100 * COUNT(DISTINCT id)::NUMERIC / SUM(COUNT(DISTINCT id)) OVER (),2) AS percentage
+FROM health.user_logs
+GROUP BY measure
+)
+SELECT
+  *
+FROM my_sample
+WHERE measure = 'blood_glucose'
+```
