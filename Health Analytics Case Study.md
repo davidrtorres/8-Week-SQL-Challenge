@@ -108,7 +108,7 @@ GROUP BY measure;
 ```
 Output
 <br>
-<img src="SQL_code/images/diastolic_systolic.png/" alt="Systolic">
+<img src="images/diastolic_systolic.png/" alt="Systolic">
 
 
 
