@@ -107,5 +107,5 @@ GROUP BY measure;
 ```
 Output<br>
 
-<img src="images/diastolic_systolic.png" alt="Employee data">
+<img src="images/diastolic_systolic.png/" alt="Employee data">
 -----
