@@ -92,7 +92,7 @@ Out of 554 users 50 have logged all 3 measurements.
 SELECT 
   COUNT(id)
 FROM user_measure_count
-WHERE unique_measure_count = 3
+WHERE unique_measure_count = 3;
 ```
 -------
 #### Question 9: What are the median systolic/diastolic blood pressure values?
@@ -103,7 +103,7 @@ SELECT
   PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY diastolic) AS diastolic_median_value
 FROM health.user_logs
 WHERE measure = 'blood_pressure'
-GROUP BY measure 
+GROUP BY measure; 
 ```
-
+Output<br>
 <img src="images/diastolic_systolic.png/" alt="Employee data">
