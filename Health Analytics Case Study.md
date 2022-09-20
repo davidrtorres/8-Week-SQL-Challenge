@@ -40,3 +40,12 @@ SELECT
 FROM user_measure_count;
 
 ```
+-------
+#### Question 4: How many users have 3 or more measurements?
+209 users have 3 or more measurements.
+```
+SELECT
+  COUNT(*) AS users_3_or_more
+FROM user_measure_count 
+WHERE measure_count >= 3;
+```
