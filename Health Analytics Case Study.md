@@ -107,7 +107,7 @@ WHERE measure = 'blood_pressure'
 GROUP BY measure; 
 ```
 Output
-
-<img src="images/diastolic_systolic.png/" alt="Employee data">
+<br>
+<img src="images/health_data.png/" alt="Employee data">
 
 
