@@ -14,3 +14,8 @@ Danny was provided me with 3 datasets: sales, menu, members
 1. What is the total amount each customer spent at the restaurant?<br> 
 2. How many days has each customer visited the restaurant?<br>
 3. What was the first item from the menu purchased by each customer?<br> 
+4. What is the most purchased item on the menu and how many times was it purchased by all customers?
+5. Which item was the most popular for each customer?
+6. Which item was purchased first by the customer after they became a member?
+7. Which item was purchased just before the customer became a member?
+8. What is the total items and amount spent for each member before they became a member? 
