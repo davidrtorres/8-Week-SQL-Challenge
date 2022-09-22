@@ -6,6 +6,6 @@
 
 
 ## Problem Statement
-
+Danny wants to use the data to answer questions about his customers, especially about their visting patterns.  
 
 
