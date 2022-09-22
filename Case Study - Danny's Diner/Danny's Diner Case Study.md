@@ -12,5 +12,5 @@ Danny was provided me with 3 datasets: sales, menu, members
 
 ## Case Study Questions
 1. What is the total amount each customer spent at the restaurant?<br> 
-2  How many days has each customer visited the restaurant?<br>
+2. How many days has each customer visited the restaurant?<br>
 3. What was the first item from the menu purchased by each customer?<br> 
