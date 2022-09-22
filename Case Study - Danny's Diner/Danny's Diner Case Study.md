@@ -13,6 +13,7 @@ Danny was provided me with 3 datasets: sales, menu, members
 Danny has provided us with 3 datasets for this casestudy.
 
 ### sales
+This dataset includes all the customer_id purchases, the corresponding order_date and the product id of each purchase.
 <p align="center">
   <img width="350" height="350" src="images/sales.png">
 </p>
