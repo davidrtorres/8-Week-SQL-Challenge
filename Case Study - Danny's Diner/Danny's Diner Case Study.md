@@ -13,7 +13,7 @@ Danny was provided me with 3 datasets: sales, menu, members
 Danny has provided us with 3 datasets for this casestudy.
 
 ### sales
-
+<img src="images/sales.png" alt="Employee data" width="75" height="75" align="center">
 
 ## Case Study Questions
 1. What is the total amount each customer spent at the restaurant?<br> 
