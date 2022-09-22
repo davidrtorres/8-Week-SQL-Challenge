@@ -24,6 +24,12 @@ This dataset includes the product_id for each item on the menu, the product_name
   <img width="350" height="150" src="images/menu.png">
 </p>
 
+### member
+This dataset includes the product_id for each item on the menu, the product_name of each item and the corresponding price.
+<p align="center">
+  <img width="350" height="150" src="images/member.png">
+</p>
+
 ## Case Study Questions
 1. What is the total amount each customer spent at the restaurant?<br> 
 2. How many days has each customer visited the restaurant?<br>
