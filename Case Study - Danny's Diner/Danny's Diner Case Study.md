@@ -25,7 +25,8 @@ This dataset includes the product_id for each item on the menu, the product_name
 </p>
 
 ### members
-This dataset includes the product_id for each item on the menu, the product_name of each item and the corresponding price.
+This dataset concerns the customer loyalty program and includes the customer_id of members their join_date.
+
 <p align="center">
   <img width="350" height="150" src="images/members.png">
 </p>
