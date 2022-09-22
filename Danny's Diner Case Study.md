@@ -6,4 +6,4 @@
 🚀
 <br>
 <br>
-I give this plugin two :+1:!
+I give this plugin two :+1+1:!
