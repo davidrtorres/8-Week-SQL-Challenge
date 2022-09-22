@@ -24,10 +24,11 @@ This dataset includes the product_id for each item on the menu, the product_name
   <img width="350" height="150" src="images/menu.png">
 </p>
 
-### member
-This dataset includes the product_id for each item on the menu, the product_name of each item and the corresponding price.
+### members
+This dataset concerns the customer loyalty program and includes the customer_id of members and their join_date.
+
 <p align="center">
-  <img width="350" height="150" src="images/member.png">
+  <img width="350" height="150" src="images/members.png">
 </p>
 
 ## Case Study Questions
@@ -41,3 +42,5 @@ This dataset includes the product_id for each item on the menu, the product_name
 8. What is the total items and amount spent for each member before they became a member?
 9. If each $ spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
 10.In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer A and B have at the end of January?   
+       
+:ramen:
