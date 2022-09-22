@@ -1,4 +1,9 @@
-<img src="images/Case Study - Danny's Diner/tacos.jpeg/" alt="Employee data" width="75" height="75" align="left">  <img src="images/Case Study - Danny's Diner/hamburger.png/" alt="Employee data" width="75" height="75" align="left"> <h1 align="left">Danny's Diner Case Study</h1>
+<img src="images/tacos.png" alt="Employee data" width="75" height="75" align="left">  <img src="images/hamburger.png" alt="Employee data" width="75" height="75" align="left"> <h1 align="left">Case Study: Danny's Diner</h1>
+
+1.png
+<img src="1.png/" alt="Systolic">
+
+
 
 ## Problem Statement
 <br>
