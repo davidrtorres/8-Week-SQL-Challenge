@@ -10,3 +10,5 @@ I give this plugin two :+1:!<br>
 
 I am :laughing:!<br>
 Let's eat :hamburger:!
+<br>
+<img class=":hamburger:!" title=":tada" alt=":tada:" src= ... height="30" width="30">
