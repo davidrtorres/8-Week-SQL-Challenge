@@ -19,4 +19,4 @@ I am :laughing:!<br>
 🍔
 
 <br>
-<img src="Case Study - Danny's Diner/images/tacos.png" alt="Employee data" width="50" height="50" align="left">
+<img src="Case Study - Danny's Diner/images/tacos.png" alt="Employee data" width="50" height="50" align="center">
