@@ -17,8 +17,9 @@ This dataset includes all the customer_id purchases, the corresponding order_dat
 <p align="center">
   <img width="350" height="350" src="images/sales.png">
 </p>
+
 ### menu
-This dataset includes all the customer_id purchases, the corresponding order_date and the product id of each purchase.
+This dataset includes all the product_id, product_name pricecustomer_id purchases, the corresponding order_date and the product id of each purchase.
 <p align="center">
   <img width="350" height="150" src="images/menu.png">
 </p>
