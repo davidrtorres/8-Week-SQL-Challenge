@@ -14,4 +14,4 @@ I am :laughing:!<br>
 🍔
 
 <br>
-<img src="images/Case Study - Danny's Diner/tacos.jpeg/" alt="Employee data" width="75" height="75" align="left">
+<img src="images/tacos.jpeg/Case Study - Danny's Diner/" alt="Employee data" width="75" height="75" align="left">
