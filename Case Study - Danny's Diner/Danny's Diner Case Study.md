@@ -24,10 +24,10 @@ This dataset includes the product_id for each item on the menu, the product_name
   <img width="350" height="150" src="images/menu.png">
 </p>
 
-### member
+### members
 This dataset includes the product_id for each item on the menu, the product_name of each item and the corresponding price.
 <p align="center">
-  <img width="350" height="150" src="images/member.png">
+  <img width="350" height="150" src="images/members.png">
 </p>
 
 ## Case Study Questions
