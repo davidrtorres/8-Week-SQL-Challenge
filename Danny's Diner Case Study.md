@@ -11,5 +11,5 @@ I give this plugin two :+1:!<br>
 I am :laughing:!<br>
 
 
-Let's eat.        :hamburger:!
+Let's eat.        :hamburger:
 <br>
