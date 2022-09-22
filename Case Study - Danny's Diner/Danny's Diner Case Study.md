@@ -17,10 +17,17 @@ This dataset includes all the customer_id purchases, the corresponding order_dat
 <p align="center">
   <img width="350" height="350" src="images/sales.png">
 </p>
+
 ### menu
-This dataset includes all the customer_id purchases, the corresponding order_date and the product id of each purchase.
+This dataset includes the product_id for each item on the menu, the product_name of each item and the corresponding price.
 <p align="center">
-  <img width="350" height="350" src="images/menu.png">
+  <img width="350" height="150" src="images/menu.png">
+</p>
+
+### member
+This dataset includes the product_id for each item on the menu, the product_name of each item and the corresponding price.
+<p align="center">
+  <img width="350" height="150" src="images/member.png">
 </p>
 
 ## Case Study Questions
