@@ -6,6 +6,23 @@
 
 
 ## Problem Statement
-Danny wants to use the data to answer questions about his customers, especially about their visting patterns.  
+Danny wants to use the data to answer questions about his customers, especially about their visting patterns, how much money they've spent and also which items are their favorite. Daniel feels that this information will help him deliver a better and more personalized experience for his customers.  Danny alos plans to use these insights to help decide whether he should expand the customer loyalty program.  Danny has asked me to write SQL queries top answer the questions.
+Danny was provided me with 3 datasets: sales, menu, members
 
+## Dataset
+Danny has provided us with 3 datasets for this casestudy.
 
+### sales
+<img src="images/sales.png" alt="Employee data" width="75" height="75" align="center">
+
+## Case Study Questions
+1. What is the total amount each customer spent at the restaurant?<br> 
+2. How many days has each customer visited the restaurant?<br>
+3. What was the first item from the menu purchased by each customer?<br> 
+4. What is the most purchased item on the menu and how many times was it purchased by all customers?
+5. Which item was the most popular for each customer?
+6. Which item was purchased first by the customer after they became a member?
+7. Which item was purchased just before the customer became a member?
+8. What is the total items and amount spent for each member before they became a member?
+9. If each $ spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
+10.In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer A and B have at the end of January?   
