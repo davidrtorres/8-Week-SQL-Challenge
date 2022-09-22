@@ -1,3 +1,3 @@
-<img src="images/food.png/" alt="Employee data" width="50" height="50" align="left">
+<img src="images/food.png/" alt="Employee data" width="75" height="75" align="left">
 
 
