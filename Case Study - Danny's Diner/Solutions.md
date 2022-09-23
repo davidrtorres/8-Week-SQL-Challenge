@@ -185,7 +185,7 @@ SELECT
   product_name,
   order_date,
   RANK() OVER(
-    PARTITION BY customer_id ORDER BY order_date) AS purchase
+    PARTITION BY customer_id ORDER BY order_date DESC) AS purchase
 FROM purchase_before_member
 WHERE membership = 'X'
 )
