@@ -113,3 +113,46 @@ Output
 <p align="left">
   <img width="300" height="100" src="images/five.png">
 </p>
+
+### 6. Which item was purchased first by the customer after they became a member?
+```
+DROP TABLE IF EXISTS membership_purchase;
+CREATE TEMP TABLE membership_purchase AS (
+SELECT
+  s.customer_id AS customer_id,
+  s.order_date AS order_date,
+  m.product_name AS product_name,
+  me.join_date AS join_date,
+  CASE
+  WHEN s.order_date >= join_date 
+    THEN 'X'
+  ELSE ''  
+  END AS membership
+FROM dannys_diner.sales AS s
+JOIN dannys_diner.menu AS m
+ON s.product_id = m.product_id
+JOIN dannys_diner.members AS me
+ON s.customer_id = me.customer_id
+ORDER BY s.customer_id
+);
+WITH cte_purchase_membership AS (
+SELECT
+  customer_id,
+  product_name,
+  order_date,
+  RANK() OVER(
+    PARTITION BY customer_id ORDER BY order_date) AS purchase_after_join
+FROM  membership_purchase
+WHERE membership = 'X'
+)
+SELECT
+*
+FROM cte_purchase_membership
+WHERE purchase_after_join =1;
+
+```
+Output
+<p align="left">
+  <img width="300" height="100" src="images/six.png">
+</p>
+
