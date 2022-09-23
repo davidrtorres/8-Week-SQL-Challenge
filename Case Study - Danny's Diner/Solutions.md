@@ -153,7 +153,7 @@ WHERE purchase_after_join =1;
 ```
 Output
 <p align="left">
-  <img width="300" height="100" src="images/six.png">
+  <img width="400" height="100" src="images/six.png">
 </p>
 
 ### 8. What is the total items and amount spent for each member before they became a member?
