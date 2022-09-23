@@ -15,4 +15,7 @@ ON s.product_id = m.product_id;
 SELECT * FROM dannys_diner_complete;
 ```
 Output
+<p align="center">
+  <img width="350" height="350" src="images/dannys_diner.png">
+</p>
 
