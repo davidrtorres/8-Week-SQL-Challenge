@@ -71,5 +71,5 @@ WHERE category_ranking =1
 ```
 Output
 <p align="left">
-  <img width="200" height="100" src="images/three.png">
+  <img width="300" height="100" src="images/three.png">
 </p>
