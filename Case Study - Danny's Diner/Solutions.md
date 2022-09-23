@@ -156,3 +156,45 @@ Output
   <img width="300" height="100" src="images/six.png">
 </p>
 
+### 8. What is the total items and amount spent for each member before they became a member?
+```
+DROP TABLE IF EXISTS purchase_member;
+CREATE TEMP TABLE purchase_member AS (
+SELECT
+  s.customer_id AS customer_id,
+  s.order_date AS order_date,
+  m.product_name AS product_name,
+  me.join_date AS join_date,
+  m.price AS price,
+  CASE
+  WHEN s.order_date >= join_date 
+    THEN 'X'
+  ELSE ''  
+  END AS membership
+FROM dannys_diner.sales AS s
+JOIN dannys_diner.menu AS m
+ON s.product_id = m.product_id
+JOIN dannys_diner.members AS me
+ON s.customer_id = me.customer_id
+ORDER BY s.customer_id
+);
+
+WITH cte_purchase_member AS (
+SELECT
+  customer_id,
+  price
+FROM purchase_member
+WHERE membership= ''
+)
+SELECT
+  customer_id,
+  SUM(price) AS total_spent,
+  COUNT(*) AS total_items
+FROM cte_purchase_member
+GROUP BY customer_id;
+
+```
+Output
+<p align="left">
+  <img width="300" height="100" src="images/six.png">
+</p>
