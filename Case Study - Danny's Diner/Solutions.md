@@ -73,3 +73,17 @@ Output
 <p align="left">
   <img width="300" height="100" src="images/three.png">
 </p>
+
+### 4. What is the most purchased item on the menu and how many times was it purchased by all customers?
+```
+SELECT
+  product_name,
+  COUNT(*) AS item_purchased_count
+FROM dannys_diner_complete
+GROUP BY product_name
+ORDER BY item_purchased_count DESC;
+```
+Output
+<p align="left">
+  <img width="300" height="100" src="images/four.png">
+</p>
