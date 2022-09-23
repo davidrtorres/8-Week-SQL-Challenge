@@ -50,4 +50,26 @@ Output
   <img width="200" height="100" src="images/two.png">
 </p>
 
-
+### 3. What was the first item from the menu purchased by each customer?
+```
+WITH cte_first_purchase AS (
+SELECT
+  customer_id, 
+  product_name,  
+  order_date,
+  ROW_NUMBER() OVER(
+    PARTITION BY customer_id ORDER BY order_date) category_ranking
+FROM dannys_diner_complete
+)
+SELECT
+  customer_id,
+  product_name,
+  ROW_NUMBER() OVER(
+    PARTITION BY customer_id ORDER BY order_date) category_ranking
+FROM cte_first_purchase  
+WHERE category_ranking =1
+```
+Output
+<p align="left">
+  <img width="200" height="100" src="images/two.png">
+</p>
