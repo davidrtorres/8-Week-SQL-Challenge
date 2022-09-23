@@ -1,5 +1,5 @@
 
-<img src="images/tacos.png" alt="Employee data" width="75" height="75">  <img src="images/hamburger.png" alt="Employee data" width="75" height="75" > <h1 >Case Study: Danny's Diner</h1>  <img src="images/ramen.png" alt="Employee data" width="75" height="75">
+<img src="images/tacos.png" alt="Employee data" width="75" height="75" align="left">  <img src="images/hamburger.png" alt="Employee data" width="75" height="75" align="left"> <h1 >Case Study: Danny's Diner</h1>  <img src="images/ramen.png" alt="Employee data" width="75" height="75" align="left">
 
 <br>
 <p align="center">
