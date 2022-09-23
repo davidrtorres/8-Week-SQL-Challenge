@@ -156,6 +156,49 @@ Output
   <img width="400" height="100" src="images/six.png">
 </p>
 
+### 7. Which item was purchased just before the customer became a member?
+```
+DROP TABLE IF EXISTS purchase_before_member;
+CREATE TEMP TABLE purchase_before_member AS (
+SELECT
+  s.customer_id AS customer_id,
+  s.order_date AS order_date,
+  m.product_name AS product_name,
+  me.join_date AS join_date,
+  CASE
+  WHEN s.order_date < join_date 
+    THEN 'X'
+  ELSE ''  
+  END AS membership
+FROM dannys_diner.sales AS s
+JOIN dannys_diner.menu AS m
+ON s.product_id = m.product_id
+JOIN dannys_diner.members AS me
+ON s.customer_id = me.customer_id
+ORDER BY s.customer_id
+);
+SELECT * FROM purchase_before_member
+
+WITH cte_purchase_before_member AS (
+SELECT
+  customer_id,
+  product_name,
+  order_date,
+  RANK() OVER(
+    PARTITION BY customer_id ORDER BY order_date) AS purchase
+FROM purchase_before_member
+WHERE membership = 'X'
+)
+SELECT
+  *
+FROM cte_purchase_before_member
+WHERE purchase = 1;
+```
+Output
+<p align="left">
+  <img width="400" height="100" src="images/seven.png">
+</p>
+
 ### 8. What is the total items and amount spent for each member before they became a member?
 ```
 DROP TABLE IF EXISTS purchase_member;
