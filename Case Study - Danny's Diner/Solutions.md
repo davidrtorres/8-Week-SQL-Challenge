@@ -13,5 +13,6 @@ INNER JOIN dannys_diner.menu AS m
 ON s.product_id = m.product_id;
 
 SELECT * FROM dannys_diner_complete;
-
 ```
+Output
+
