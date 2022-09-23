@@ -36,7 +36,7 @@ Output
   <img width="200" height="100" src="images/one.png">
 </p>
 
-## 2. How many days has each customer visited the restaurant?
+### 2. How many days has each customer visited the restaurant?
 ```
 SELECT
   customer_id,
