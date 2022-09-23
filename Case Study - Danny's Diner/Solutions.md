@@ -73,3 +73,43 @@ Output
 <p align="left">
   <img width="300" height="100" src="images/three.png">
 </p>
+
+### 4. What is the most purchased item on the menu and how many times was it purchased by all customers?
+```
+SELECT
+  product_name,
+  COUNT(*) AS item_purchased_count
+FROM dannys_diner_complete
+GROUP BY product_name
+ORDER BY item_purchased_count DESC;
+```
+Output
+<p align="left">
+  <img width="300" height="100" src="images/four.png">
+</p>
+
+### 5. Which item was the most popular for each customer?
+```
+WITH cte_popular_item AS (
+SELECT
+  customer_id,
+  product_name,
+  COUNT(*) AS times_purchased,
+  ROW_NUMBER() OVER(
+    PARTITION BY customer_id ORDER BY COUNT(product_name) DESC) category_ranking
+FROM dannys_diner_complete
+GROUP BY customer_id, product_name
+)
+SELECT
+  customer_id,
+  product_name,
+  times_purchased
+FROM cte_popular_item
+WHERE category_ranking = 1
+
+
+```
+Output
+<p align="left">
+  <img width="300" height="100" src="images/five.png">
+</p>
