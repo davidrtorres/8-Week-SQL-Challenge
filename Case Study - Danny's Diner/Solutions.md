@@ -241,5 +241,5 @@ GROUP BY customer_id;
 ```
 Output
 <p align="left">
-  <img width="300" height="100" src="images/eight.png">
+  <img width="350" height="100" src="images/eight.png">
 </p>
