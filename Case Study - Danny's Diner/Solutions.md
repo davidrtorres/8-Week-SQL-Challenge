@@ -35,3 +35,19 @@ Output
 <p align="left">
   <img width="200" height="100" src="images/one.png">
 </p>
+
+## 2. How many days has each customer visited the restaurant?
+```
+SELECT
+  customer_id,
+  COUNT(DISTINCT order_date) 
+FROM dannys_diner_complete
+GROUP BY customer_id
+ORDER BY customer_id;
+```
+Output
+<p align="left">
+  <img width="200" height="100" src="images/two.png">
+</p>
+
+
