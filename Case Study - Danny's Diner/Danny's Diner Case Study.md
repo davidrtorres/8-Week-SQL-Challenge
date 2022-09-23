@@ -1,6 +1,7 @@
 
-<img src="images/tacos.png" alt="Employee data" width="75" height="75" align="left"><img src="images/hamburger.png" alt="Employee data" width="75" height="75" align="leftt"> <h1 align="center">Case Study: Danny's Diner</h1>
+<img src="images/tacos.png" alt="Employee data" width="75" height="75" align="left"><img src="images/hamburger.png" alt="Employee data" width="75" height="75" align="left"> <h1 align="left">Case Study: Danny's Diner</h1>
 
+<p align="center">
   <img width="350" height="350" src="images/casestudy1.png">
 </p>
 
@@ -10,7 +11,7 @@ Danny wants to use the data to answer questions about his customers, especially 
 Danny was provided me with 3 datasets: sales, menu, members
 
 ## Dataset
-Danny has provided us with 3 datasets for this casestudy.
+Danny has provided us with 3 datasets for this case study.
 
 ### sales
 This dataset includes all the customer_id purchases, the corresponding order_date and the product id of each purchase.
@@ -43,4 +44,3 @@ This dataset concerns the customer loyalty program and includes the customer_id 
 9. If each $ spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
 10.In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer A and B have at the end of January?   
        
-:ramen:
