@@ -30,6 +30,6 @@ GROUP BY customer_id
 ORDER BY customer_id;
 ```
 Output
-<p align="center">
-  <img width="350" height="350" src="images/one.png">
+<p align="left">
+  <img width="200" height="100" src="images/one.png">
 </p>
