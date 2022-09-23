@@ -190,7 +190,9 @@ FROM purchase_before_member
 WHERE membership = 'X'
 )
 SELECT
-  *
+  customer_id,
+  product_name,
+  order_date
 FROM cte_purchase_before_member
 WHERE purchase = 1;
 ```
