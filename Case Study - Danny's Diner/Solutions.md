@@ -241,5 +241,45 @@ GROUP BY customer_id;
 ```
 Output
 <p align="left">
-  <img width="300" height="100" src="images/eight.png">
+  <img width="350" height="100" src="images/eight.png">
+</p>
+
+### 9. If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
+
+```
+DROP TABLE IF EXISTS customer_points;
+CREATE TEMP TABLE customer_points AS (
+SELECT
+  s.customer_id AS customer_id,
+  s.order_date AS order_date,
+  m.product_name AS product_name,
+  me.join_date AS join_date,
+  m.price AS price,
+  CASE
+  WHEN product_name= 'sushi' 
+    THEN price * 20
+  ELSE price * 10  
+  END AS points
+FROM dannys_diner.sales AS s
+JOIN dannys_diner.menu AS m
+ON s.product_id = m.product_id
+JOIN dannys_diner.members AS me
+ON s.customer_id = me.customer_id
+ORDER BY s.customer_id
+);
+WITH cte_customer_points_total AS (
+SELECT
+  customer_id,
+  SUM(points) AS total_points
+FROM customer_points
+GROUP BY customer_id
+)
+SELECT
+  *
+FROM cte_customer_points_total
+ORDER BY customer_id;
+```
+Output
+<p align="left">
+  <img width="350" height="100" src="images/nine.png">
 </p>
