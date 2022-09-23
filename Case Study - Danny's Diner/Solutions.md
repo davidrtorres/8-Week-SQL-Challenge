@@ -1,5 +1,7 @@
 # Solutions
 
+
+I created a temporary table to join the sales and menu tables.
 ```
 DROP TABLE IF EXISTS dannys_diner_complete;
 CREATE TEMP TABLE dannys_diner_complete AS
