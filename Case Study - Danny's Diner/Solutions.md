@@ -19,3 +19,4 @@ Output
   <img width="350" height="350" src="images/dannys_diner.png">
 </p>
 
+### 1. What is the total amount each customer spent at the restaurant?
