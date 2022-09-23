@@ -1,5 +1,7 @@
 # Solutions
 
+
+I created a temporary table to join the sales and menu tables.
 ```
 DROP TABLE IF EXISTS dannys_diner_complete;
 CREATE TEMP TABLE dannys_diner_complete AS
@@ -20,8 +22,8 @@ Output
 </p>
 
 ### 1. What is the total amount each customer spent at the restaurant?
-```
 
+```
 SELECT
   customer_id,
   SUM(price)
@@ -29,3 +31,7 @@ FROM dannys_diner_complete
 GROUP BY customer_id
 ORDER BY customer_id;
 ```
+Output
+<p align="left">
+  <img width="200" height="100" src="images/one.png">
+</p>
