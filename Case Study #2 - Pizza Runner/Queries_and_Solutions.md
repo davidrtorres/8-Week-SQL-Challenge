@@ -14,3 +14,19 @@ __ This is a test __
 </p>
 <h1><center>The text</center></h1>
 
+
+```python
+SELECT 
+  table_name,
+  column_name,
+  data_type
+FROM information_schema.columns
+WHERE table_schema = 'pizza_runner' AND table_name = 'customer_orders'
+```
+<br>
+
+
+
+| table_name | column_name | data_type |<br>
+| Suzy | suzy@apple.com |<br>
+| Bob  | bob@me.com |
