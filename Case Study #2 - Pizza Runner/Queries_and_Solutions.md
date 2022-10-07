@@ -5,7 +5,7 @@
 * Testing<br>
 __ This is a test __
 ---
-<p align="center">
+<p>
   <center>
  <h2>CASE STUDY #2 - Pizza Runner</h2> 
  </center>
