@@ -25,8 +25,8 @@ WHERE table_schema = 'pizza_runner' AND table_name = 'customer_orders'
 ```
 <br>
 
+| First Header  | Second Header |
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  |
 
-
-| table_name | column_name | data_type |<br>
-| Suzy | suzy@apple.com |<br>
-| Bob  | bob@me.com |
