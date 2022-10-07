@@ -5,7 +5,7 @@
 * Testing<br>
 __ This is a test __
 ---
-<p style="text-align: center;">A piece of centered text</p>
+<p align= "center">A piece of centered text</p>
 
 
 <p align="center">
