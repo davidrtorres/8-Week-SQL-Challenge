@@ -23,7 +23,7 @@ SELECT
 FROM information_schema.columns
 WHERE table_schema = 'pizza_runner' AND table_name = 'customer_orders'
 ```
-<br>
+### Output
 
 | table_name    | column_name   | data_type   |
 | ------------- | ------------- | ------------- |
