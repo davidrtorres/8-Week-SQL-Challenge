@@ -36,3 +36,8 @@ WHERE table_schema = 'pizza_runner' AND table_name = 'customer_orders'
 
 
 
+| Left columns  | Right columns  | Center Align|
+| ------------- |-------------:  | :----------:|
+| left foo      | right foo      | center foo  |
+| left bar      | right bar      | center bar  |
+| left baz      | right baz      | center baz  |
