@@ -6,7 +6,9 @@
 __ This is a test __
 ---
 <p align="center">
+  <center>
  <h2>CASE STUDY #2 - Pizza Runner</h2> 
+ </center>
 </p>
 
 <p align="center">
