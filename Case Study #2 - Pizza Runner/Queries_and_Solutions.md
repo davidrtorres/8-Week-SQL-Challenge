@@ -12,4 +12,5 @@ __ This is a test __
 <p align="center">
   <img width="250" height="250" src="images/pizza_runner.png">
 </p>
+<center><h1>The text</h1></center>
 
