@@ -119,8 +119,8 @@ ORDER BY customer_id
 
 ```python
 
-DROP TABLE IF EXISTS max_number_pizzas;
-CREATE TEMP TABLE max_number_pizzas AS
+DROP TABLE IF EXISTS max_pizzas_deliver;
+CREATE TEMP TABLE max_pizzas_deliver AS
 SELECT
   c.order_id AS order_id
 FROM cleaned_runner_orders AS r 
@@ -132,7 +132,7 @@ ORDER BY order_id
 SELECT 
   order_id,
   COUNT(*) AS max_pizzas_delivered
-FROM max_number_pizzas
+FROM max_pizzas_deliver
 GROUP BY order_id
 ORDER BY max_pizzas_delivered DESC
 LIMIT 1;
