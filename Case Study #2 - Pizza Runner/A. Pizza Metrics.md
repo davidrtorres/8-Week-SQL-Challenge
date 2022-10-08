@@ -38,7 +38,7 @@ FROM cleaned_customer_orders
 ```
 > Output
  
-|pizzas_ordered| 
+|unique_customer_orders| 
 |--------------| 
 | 10           | 
 
