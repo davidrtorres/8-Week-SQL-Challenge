@@ -29,18 +29,18 @@ FROM cleaned_customer_orders
 | 14           | 
 
 ---
-### 2.  How many pizzas were ordered?
+### 2.  How many unique customer orders were made??
 
 ```python
-SELECT 
-  COUNT(order_id) AS pizzas_ordered
-FROM cleaned_customer_orders
+SELECT
+  COUNT(DISTINCT order_id) AS unique_customer_orders
+FROM cleaned_customer_orders  
 ```
 > Output
-> 
+ 
 |pizzas_ordered| 
 |--------------| 
-| 14           | 
+| 10           | 
 
 
 
