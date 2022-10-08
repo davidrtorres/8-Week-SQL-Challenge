@@ -12,7 +12,7 @@ __ This is a test __
 <p align="center">
   <img width="350" height="350" src="images/pizza_runner.png">
 </p>
-<h1><center>The text</center></h1>
+<center>The text</center>
 
 ---
 ### How many pizzas were ordered?
