@@ -15,7 +15,6 @@ __ This is a test __
 <h1><center>The text</center></h1>
 
 
-
 ```python
 SELECT 
   table_name,
