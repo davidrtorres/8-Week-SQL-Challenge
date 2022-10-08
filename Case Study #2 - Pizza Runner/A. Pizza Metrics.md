@@ -10,7 +10,7 @@ __ This is a test __
 </p>
 
 <p align="center">
-  <img width="250" height="250" src="images/pizza_runner.png">
+  <img width="350" height="350" src="images/pizza_runner.png">
 </p>
 <h1><center>The text</center></h1>
 
