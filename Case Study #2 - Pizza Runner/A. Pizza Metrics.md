@@ -23,7 +23,10 @@ SELECT
 FROM cleaned_customer_orders
 ```
 > Output
-
+> 
+|pizzas_ordered| 
+|--------------| 
+| 14           | 
 
 ---
 
