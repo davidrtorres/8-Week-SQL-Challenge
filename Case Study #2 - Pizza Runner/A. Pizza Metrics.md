@@ -29,6 +29,27 @@ FROM cleaned_customer_orders
 | 14           | 
 
 ---
+### 2.  How many pizzas were ordered?
+
+```python
+SELECT 
+  COUNT(order_id) AS pizzas_ordered
+FROM cleaned_customer_orders
+```
+> Output
+> 
+|pizzas_ordered| 
+|--------------| 
+| 14           | 
+
+
+
+
+
+
+
+
+----
 
 ```python
 SELECT 
