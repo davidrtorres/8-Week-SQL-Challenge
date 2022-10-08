@@ -115,7 +115,39 @@ ORDER BY customer_id
 | 105 | Vegetarian  | 1  |
 
 ----
+### 6.  What was the maximum number of pizzas delivered in a single order? 
 
+```python
+
+DROP TABLE IF EXISTS max_number_pizzas;
+CREATE TEMP TABLE max_number_pizzas AS
+SELECT
+  c.order_id AS order_id
+FROM cleaned_runner_orders AS r 
+INNER JOIN cleaned_customer_orders AS c 
+ON r.order_id = c.order_id
+WHERE distance IS NOT NULL
+ORDER BY order_id
+
+SELECT 
+  order_id,
+  COUNT(*) AS max_pizzas_delivered
+FROM max_number_pizzas
+GROUP BY order_id
+ORDER BY max_pizzas_delivered DESC
+LIMIT 1;
+ 
+```
+> Output
+
+| order_id    | max_pizzas_delivered   | 
+| ------------- | ------------- | 
+| 4 | 3  |
+
+
+
+
+------
 ```python
 SELECT 
   table_name,
