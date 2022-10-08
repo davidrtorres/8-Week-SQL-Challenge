@@ -42,6 +42,26 @@ FROM cleaned_customer_orders
 |--------------| 
 | 10           | 
 
+---
+### 3.  How many successful orders were delivered by each runner??
+
+```python
+SELECT
+  runner_id,
+  COUNT(duration) AS successful_orders
+FROM cleaned_runner_orders
+GROUP BY runner_id
+ORDER BY runner_id
+ 
+```
+> Output
+
+| runner_id | successful_orders | 
+| --------- | ------------- | 
+| 1         | 4   | 
+| 2         | 3   | 
+| 3         | 1   | 
+ 
 
 
 
