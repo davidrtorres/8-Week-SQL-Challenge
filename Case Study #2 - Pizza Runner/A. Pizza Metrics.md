@@ -67,22 +67,22 @@ ORDER BY runner_id
 
 ```python
 SELECT
-  c.pizza_id AS pizza_id,
+  n.pizza_name AS pizza_name,
   COUNT(r.duration) AS delivered
-FROM cleaned_customer_orders AS c 
-INNER JOIN cleaned_runner_orders AS r
-ON c.order_id = r.order_id
-WHERE duration IS NOT NULL
-GROUP BY pizza_id
-ORDER BY pizza_id
+FROM cleaned_runner_orders AS r 
+INNER JOIN cleaned_customer_orders AS c 
+ON r.order_id = c.order_id
+INNER JOIN pizza_runner.pizza_names AS n 
+ON c.pizza_id = n.pizza_id
+GROUP BY pizza_name
  
 ```
 > Output
 >
-| pizza_id | delivered | 
+| pizza_name | delivered | 
 | --------- | ------------- | 
-| 1         | 9   | 
-| 2         | 3   | 
+| Meatlovers | 9   | 
+| Vegetarian | 3   | 
 
 
 
