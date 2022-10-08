@@ -13,8 +13,17 @@ __ This is a test __
   <img width="350" height="350" src="images/pizza_runner.png">
 </p>
 ---
-### How many pizzas were ordered?
+### 1.  How many pizzas were ordered?
 
+```python
+SELECT 
+  COUNT(order_id) AS pizzas_ordered
+FROM cleaned_customer_orders
+```
+> Output
+
+
+---
 
 ```python
 SELECT 
