@@ -144,6 +144,59 @@ LIMIT 1;
 | ------------- | ------------- | 
 | 4 | 3  |
 
+--------
+### 7.  For each customer, how many delivered pizzas had at least 1 change and how many had no changes? 
+
+```python
+DROP TABLE IF EXISTS pizza_changes;
+CREATE TEMP TABLE pizza_changes AS
+SELECT
+  c.order_id AS order_id,
+  c.customer_id AS customer_id,
+  c.exclusions AS exclusions,
+  c.extras AS extras,
+  r.cancellation
+FROM cleaned_runner_orders AS r 
+INNER JOIN cleaned_customer_orders AS c 
+ON r.order_id = c.order_id
+INNER JOIN pizza_runner.pizza_names AS n 
+ON c.pizza_id = n.pizza_id;
+
+
+WITH cte_pizza_changes AS (
+SELECT
+  customer_id,
+  SUM(CASE
+  WHEN (exclusions IS NOT NULL 
+      OR extras IS NOT NULL) THEN 1
+  ELSE 0
+  END) AS at_least_1_change,
+  SUM(CASE
+  WHEN (exclusions IS NULL 
+      AND extras IS NULL) THEN 1
+  ELSE 0
+  END) AS no_change
+FROM pizza_changes  
+WHERE cancellation is NULL
+GROUP BY customer_id
+)
+SELECT
+  *
+FROM cte_pizza_changes;  
+
+```
+> Output
+
+| customer_id    | at_least_1_change  | no_change  | 
+| ------------- | ------------- | ------------- | 
+| 101 | 0  | 2  |
+| 102 | 0  | 3  |
+| 103 | 3  | 0  |
+| 104 | 2  | 1  |
+| 105 | 1  | 0  |
+
+
+
 
 
 
