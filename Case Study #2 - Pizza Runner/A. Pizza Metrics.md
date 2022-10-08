@@ -6,7 +6,7 @@
 __ This is a test __
 ---
 <p align= "center">
-    <h2>A piece of centered text</h2>
+    <h1>A. Pizza Metrics</h1>
 </p>
 
 <p align="center">
