@@ -195,6 +195,22 @@ FROM cte_pizza_changes;
 | 104 | 2  | 1  |
 | 105 | 1  | 0  |
 
+### 8.  How many pizzas were delivered that had both exclusions and extras? 
+
+```python
+SELECT
+  COUNT(*) AS pizzas_w_exclusions_extras
+FROM cleaned_runner_orders AS r 
+INNER JOIN cleaned_customer_orders AS c 
+ON r.order_id = c.order_id
+WHERE distance IS NOT NULL
+  AND (exclusions IS NOT NULL AND extras IS NOT NULL);
+```
+> Output
+
+| pizzas_w_exclusions_extras | 
+| ------------- | 
+| 1 | 
 
 
 
