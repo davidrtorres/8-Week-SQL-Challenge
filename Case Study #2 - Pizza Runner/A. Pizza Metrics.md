@@ -127,7 +127,7 @@ FROM cleaned_runner_orders AS r
 INNER JOIN cleaned_customer_orders AS c 
 ON r.order_id = c.order_id
 WHERE distance IS NOT NULL
-ORDER BY order_id
+ORDER BY order_id;
 
 SELECT 
   order_id,
