@@ -43,7 +43,7 @@ FROM cleaned_customer_orders
 | 10           | 
 
 ---
-### 3.  How many successful orders were delivered by each runner??
+### 3.  How many successful orders were delivered by each runner?
 
 ```python
 SELECT
@@ -62,10 +62,27 @@ ORDER BY runner_id
 | 2         | 3   | 
 | 3         | 1   | 
  
+---
+### 4.  How many of each type of pizza was delivered?
 
-
-
-
+```python
+SELECT
+  c.pizza_id AS pizza_id,
+  COUNT(r.duration) AS delivered
+FROM cleaned_customer_orders AS c 
+INNER JOIN cleaned_runner_orders AS r
+ON c.order_id = r.order_id
+WHERE duration IS NOT NULL
+GROUP BY pizza_id
+ORDER BY pizza_id
+ 
+```
+> Output
+>
+| pizza_id | delivered | 
+| --------- | ------------- | 
+| 1         | 9   | 
+| 2         | 3   | 
 
 
 
