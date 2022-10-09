@@ -9,7 +9,9 @@
 
 ---
 ### Cleaning Tables
-#### 1. customer_orders Table
+### 1. customer_orders Table
+* exclusion and extras columns have blank spaces which will be indicated as null.
+* The null string values in exclusion and extras columns will be converteded to null values.
 
 ```python
 DROP TABLE IF EXISTS cleaned_customer_orders;
