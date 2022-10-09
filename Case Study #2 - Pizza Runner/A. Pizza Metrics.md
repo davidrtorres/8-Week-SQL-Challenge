@@ -258,33 +258,3 @@ ORDER BY day_of_week;
 
 
 
-
-
-
-------
-```python
-SELECT 
-  table_name,
-  column_name,
-  data_type
-FROM information_schema.columns
-WHERE table_schema = 'pizza_runner' AND table_name = 'customer_orders'
-```
-> ## Output
-
-| table_name    | column_name   | data_type   |
-| ------------- | ------------- | ------------- |
-| customer_orders | order_id    | integer  |
-| customer_orders | customer_id | inter  |
-| customer_orders | pizza_id    | inter  |
-| customer_orders | exclusions  | character varying  |
-| customer_orders | extras      | character varying  |
-| customer_orders | order_time  | timestamp without time  |
-
-
-
-| Left columns  | Right columns  | Center Align|
-| ------------- |-------------:  | :----------:|
-| left foo      | right foo      | center foo  |
-| left bar      | right bar      | center bar  |
-| left baz      | right baz      | center baz  |
