@@ -212,6 +212,33 @@ WHERE distance IS NOT NULL
 | ------------- | 
 | 1 | 
 
+------
+### 9.  What was the total volumne of pizzas ordered for each hour of the day? 
+
+```python
+SELECT 
+  EXTRACT(HOUR FROM order_time) AS hour_of_day,
+  COUNT(order_id) AS num_pizzas_ordered
+FROM cleaned_customer_orders
+GROUP BY hour_of_day
+ORDER BY hour_of_day
+```
+> Output
+
+| hour_of_the_day | pizza_count   | 
+| ------------- | ------------- | 
+| 11 | 1 | 
+| 13 | 3 | 
+| 18 | 3 | 
+| 19 | 1 | 
+| 21 | 3 | 
+| 23 | 3 | 
+
+-----
+
+
+
+
 
 
 
