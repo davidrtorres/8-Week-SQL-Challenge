@@ -8,6 +8,38 @@
 </p>
 
 ---
+### Cleaning Tables
+#### 1. customer_orders Table
+
+```python
+DROP TABLE IF EXISTS cleaned_customer_orders;
+CREATE TEMP TABLE cleaned_customer_orders AS
+SELECT
+  order_id,
+  customer_id, 
+  pizza_id,
+  CASE 
+  WHEN exclusions LIKE '%null%' OR exclusions = '' THEN Null 
+  ELSE exclusions
+  END AS exclusions,
+  CASE
+  WHEN extras LIKE '%null%' OR extras = '' THEN Null 
+  ELSE extras
+  END AS extras,
+  order_time
+FROM pizza_runner.customer_orders;
+```
+> Output
+
+| order_id | customer_id | pizza_id | exclusions | extras |order_time |
+| --------- | ------------- |  ------------- | -------- | ----------- |----------- |
+| 1 | 101  |  1 | null | null |2021-01-01 18:05:02.000 |
+| 2 | 101   |  1 | null  | null  |2021-01-01 19:00:52.000 |
+| 3 | 102   |  1 | null  | null  | 2021-01-02 23:51:23.000 |
+| 3 | 102   |  2 | null | null | 2021-01-02 23:51:23.000 |
+| 4 | 103   |  1 | 4 | null | 2021-01-04 13:23:46.000
+| 4 | 103   |  1 | 4  | null | 2021-01-04 13:23:46.000
+----
 
 ### 1.  How many pizzas were ordered?
 
