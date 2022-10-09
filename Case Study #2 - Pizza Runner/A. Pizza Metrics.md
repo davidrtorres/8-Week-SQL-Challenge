@@ -1,10 +1,4 @@
-# Head
-## Head
-### Head
-*Testing*
-* Testing<br>
-__ This is a test __
----
+
 <p align= "center">
     <h1>A.   Pizza Metrics</h1>
 </p>
