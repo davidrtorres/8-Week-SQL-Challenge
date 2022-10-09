@@ -221,7 +221,7 @@ SELECT
   COUNT(order_id) AS num_pizzas_ordered
 FROM cleaned_customer_orders
 GROUP BY hour_of_day
-ORDER BY hour_of_day
+ORDER BY hour_of_day;
 ```
 > Output
 
@@ -235,7 +235,25 @@ ORDER BY hour_of_day
 | 23 | 3 | 
 
 -----
+### 10.  What was the volume of orders for each day of the week? 
 
+```python
+SELECT 
+  TO_CHAR(order_time, 'DAY') AS day_of_week,
+  COUNT(order_id) AS num_pizzas_ordered
+FROM cleaned_customer_orders
+GROUP BY day_of_week
+ORDER BY day_of_week;
+
+```
+> Output
+
+| day_of_week | num_orders_each_day_week | 
+| ------------- | ------------- | 
+| Friday | 5 | 
+| Monday | 5 | 
+| Saturday | 3 | 
+| Sunday | 1 | 
 
 
 
