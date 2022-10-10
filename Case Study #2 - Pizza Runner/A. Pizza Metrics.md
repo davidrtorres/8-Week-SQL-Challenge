@@ -70,6 +70,8 @@ FROM pizza_runner.runner_orders;
 ```
 
 ------
+# Questions and Solutions
+
 ### 1.  How many pizzas were ordered?
 
 ```python
