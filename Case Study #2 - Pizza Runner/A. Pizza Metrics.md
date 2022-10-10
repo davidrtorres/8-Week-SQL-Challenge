@@ -69,7 +69,7 @@ FROM pizza_runner.runner_orders;
 
 ```
 
-
+------
 ### 1.  How many pizzas were ordered?
 
 ```python
