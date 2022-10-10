@@ -18,7 +18,7 @@ GROUP BY 1
 | 2         | 1   | 
 
 ------
-### 1. What was the average time in minutes it took for each runner to arrive at the Pizza Runner HQ to pick up orders?
+### 2. What was the average time in minutes it took for each runner to arrive at the Pizza Runner HQ to pick up orders?
 ```python
 WITH cte_avg_pickup_time AS (
 SELECT
