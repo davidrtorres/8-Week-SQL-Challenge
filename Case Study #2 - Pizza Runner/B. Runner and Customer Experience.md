@@ -3,7 +3,7 @@
 ```python
 
 SELECT
-  DATE_PART('week', registration_date) AS registration_week,
+  DATE_PART('week', registration_date::TIMESTAMP) AS registration_week,
   COUNT(*) AS runners_signed_up
 FROM pizza_runner.runners
 GROUP BY 1
