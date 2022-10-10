@@ -8,8 +8,8 @@
 </p>
 
 ---
-### Cleaning Tables
-### 1. customer_orders Table
+## Cleaning Tables
+###  customer_orders Table
 * The exclusion and extras columns need to be cleaned.
 * There are blank spaces which will be indicated as null.
 * The null string values in exclusion and extras columns will be converted to null values.
@@ -43,6 +43,32 @@ FROM pizza_runner.customer_orders;
 | 4 | 103   |  1 | 4 | null | 2021-01-04 13:23:46.000
 | 4 | 103   |  1 | 4  | null | 2021-01-04 13:23:46.000
 ----
+### runner_orders Table
+
+* The pickup_time, cancellation and distance columns need to be cleaned.
+* For distance and duration the datatypes are varied.  Values need to be split and converted to integers. 
+* The null values are strings and need to be converted to null values.
+
+```python
+DROP TABLE IF EXISTS cleaned_runner_orders;
+CREATE TEMP TABLE cleaned_runner_orders AS
+SELECT
+  order_id,
+  runner_id, 
+  CASE 
+  WHEN pickup_time LIKE '%null%' THEN Null 
+  ELSE pickup_time
+  END AS pickup_time,
+  CASE
+  WHEN cancellation LIKE '%null%' OR cancellation = '' THEN Null
+  ELSE cancellation
+  END AS cancellation,
+  NULLIF(REGEXP_REPLACE(distance,'[^0-9.]','','g'),'')::NUMERIC AS distance,
+  NULLIF(REGEXP_REPLACE(duration,'[^0-9.]','','g'),'')::NUMERIC AS duration
+FROM pizza_runner.runner_orders;
+
+```
+
 
 ### 1.  How many pizzas were ordered?
 
