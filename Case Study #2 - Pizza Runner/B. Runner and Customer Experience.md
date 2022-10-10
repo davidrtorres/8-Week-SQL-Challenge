@@ -11,7 +11,7 @@ GROUP BY 1
 ```
 > Output
 
-| runner_id | runners_signed_up | 
+| registration_week | runners_signed_up | 
 | --------- | ------------- | 
 | 53         | 2  | 
 | 1        | 1   | 
