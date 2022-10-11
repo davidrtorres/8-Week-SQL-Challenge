@@ -73,3 +73,32 @@ ORDER BY order_id;
 | 8         | 1   | 20 |
 | 10        | 2   | 15 |
 ----
+### What was the average distance traveled for each customer?
+```python
+
+WITH my_sample AS (
+SELECT
+  t2.customer_id AS customer_id,
+  NULLIF(REGEXP_REPLACE(t1.distance,'[^0-9.]','','g'),'')::NUMERIC AS distance
+FROM pizza_runner.runner_orders AS t1
+INNER JOIN pizza_runner.customer_orders AS t2
+  ON t1.order_id = t2.order_id
+WHERE t1.distance != 'null'
+)
+SELECT
+  customer_id,
+  ROUND(AVG(distance),2)
+FROM my_sample  
+GROUP BY customer_id
+ORDER BY customer_id;
+```
+> Output
+> 
+| customer_id  | avg_distance |  
+| --------- | ------------- |
+| 101         | 20.00   |
+| 102       | 16.73   | 
+| 103       | 23.40   | 
+| 104         | 10.00   | 
+| 105         | 25.00   | 
+----
