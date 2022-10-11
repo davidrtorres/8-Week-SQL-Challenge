@@ -44,3 +44,32 @@ ORDER BY runner_id;
 | 1         | 15.33 | 
 | 2        | 19.67   | 
 | 3         | 10.00   | 
+
+------
+### 3. Is there any relationship between the number of pizzas and how long the order takes to prepare?
+```python
+
+SELECT 
+  t2.order_id AS order_id,
+  COUNT(t2.order_id) AS num_pizzas,
+  DATE_PART('MINUTE',AGE(t1.pickup_time::TIMESTAMP,t2.order_time::TIMESTAMP))::INTEGER AS time_prepare_order
+FROM pizza_runner.runner_orders AS t1
+INNER JOIN pizza_runner.customer_orders AS t2
+  ON t1.order_id = t2.order_id
+WHERE t1.pickup_time != 'null'
+GROUP BY 1,3
+ORDER BY order_id;
+```
+>Output
+
+| order_id  | num_pizzas | time_prepare_order | 
+| --------- | ------------- | ------------- |
+| 1         | 1   | 10 |
+| 2         | 1   | 10 |
+| 3         | 2   | 21 |
+| 4         | 3   | 29 |
+| 5         | 1   | 10 |
+| 7         | 1   | 10 |
+| 8         | 1   | 20 |
+| 10        | 2   | 15 |
+----
