@@ -120,3 +120,4 @@ FROM cte_diff_delivery_times;
 | diff_delivery_times  |   
 | --------- | 
 | 30         | 
+---
