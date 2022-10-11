@@ -73,7 +73,7 @@ ORDER BY order_id;
 | 8         | 1   | 20 |
 | 10        | 2   | 15 |
 ----
-### What was the average distance traveled for each customer?
+### 4.  What was the average distance traveled for each customer?
 ```python
 
 WITH my_sample AS (
