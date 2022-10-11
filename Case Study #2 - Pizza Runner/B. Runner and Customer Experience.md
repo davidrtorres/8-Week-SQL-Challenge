@@ -102,3 +102,21 @@ ORDER BY customer_id;
 | 104         | 10.00   | 
 | 105         | 25.00   | 
 ----
+### 5.  What is the difference between the longest and shortest delivery times for all orders?
+```python
+
+WITH cte_diff_delivery_times AS (
+SELECT
+  NULLIF(REGEXP_REPLACE(duration,'[^0-9.]','','g'),'')::NUMERIC AS duration
+FROM pizza_runner.runner_orders AS t1
+WHERE duration != 'null'
+)
+SELECT 
+  MAX(duration) - MIN(duration) AS diff_delivery_times
+FROM cte_diff_delivery_times;
+```
+> Output
+> 
+| diff_delivery_times  |   
+| --------- | 
+| 30         | 
