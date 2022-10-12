@@ -121,3 +121,41 @@ FROM cte_diff_delivery_times;
 | --------- | 
 | 30         | 
 ---
+### 6. What was the average speed for each runner for each delivery and do you notice any trends for these values?
+```python
+WITH cte_runner_avg_speed AS (
+SELECT 
+  t1.runner_id AS runner_id,
+  t2.customer_id AS customer_id,
+  t1.order_id AS order_id,
+  DATE_PART('hour',pickup_time::TIMESTAMP) AS pickup_hour,
+  NULLIF(REGEXP_REPLACE(t1.distance,'[^0-9.]','','g'),'')::NUMERIC AS distance,
+  NULLIF(REGEXP_REPLACE(t1.duration,'[^0-9.]','','g'),'')::NUMERIC AS duration
+FROM pizza_runner.runner_orders AS t1
+INNER JOIN pizza_runner.customer_orders AS t2
+  ON t1.order_id = t2.order_id
+WHERE t1.distance != 'null'
+)
+SELECT
+  runner_id,
+  customer_id,
+  order_id,
+  pickup_hour,
+  ROUND(AVG(distance / (duration/ 60)),2) AS average_speed
+FROM cte_runner_avg_speed
+GROUP BY runner_id, customer_id,  order_id, pickup_hour
+ORDER BY 1;
+
+```
+> Output
+
+| runner_id | customer_id | order_id  | pickup_hour |  average_speed |
+| --------- | ------------- | ------------- | ------- | ------- |
+| 1  | 101   | 1 | 18 | 37.50|
+| 1  | 101   | 2 | 19 | 44.44 |
+| 1  | 102   | 3 | 0 | 40.20 |
+| 1  | 104   | 10 | 18 | 60.0 |
+| 2  | 102   | 8 | 0 | 93.60 |
+| 2  | 103   | 4 | 13| 35.10 |
+| 2  | 105   | 7 | 21| 60.00 |
+| 3  | 104   | 5 | 21| 40.00 |
