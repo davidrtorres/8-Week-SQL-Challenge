@@ -73,7 +73,7 @@ FROM cleaned_customer_orders
 )
 SELECT
   topping_name,
-  COUNT(*) AS excluded_count
+  COUNT(*) AS exclusion_count
 FROM  cte_commonly_excluded AS t1 
 INNER JOIN pizza_runner.pizza_toppings AS t2
 ON t1.excluded_toppings = t2.topping_id
@@ -83,7 +83,7 @@ ORDER BY 2 DESC;
 ```
 > Output
 > 
-| topping_name | excluded_count | 
+| topping_name | exclusion_count | 
 | --------- | ------------- | 
 | Cheese  | 4   |
 | Mushrooms  | 1   | 
