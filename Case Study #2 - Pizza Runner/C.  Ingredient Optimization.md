@@ -85,6 +85,6 @@ ORDER BY 2 DESC;
 > 
 | topping_name | excluded_count | 
 | --------- | ------------- | 
-| Bacon  | 4   |
-| Chicken  | 1   | 
-| Cheese  | 1   | 
+| Cheese  | 4   |
+| Mushrooms  | 1   | 
+| BBQ Sauce  | 1   | 
