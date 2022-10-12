@@ -159,3 +159,10 @@ ORDER BY 1;
 | 2  | 103   | 4 | 13| 35.10 |
 | 2  | 105   | 7 | 21| 60.00 |
 | 3  | 104   | 5 | 21| 40.00 |
+
+-----
+### 7. What is the successful delivery percentage for each runner?
+```python
+
+
+```
