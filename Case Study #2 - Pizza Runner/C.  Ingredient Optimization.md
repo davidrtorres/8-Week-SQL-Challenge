@@ -63,3 +63,28 @@ ORDER BY 2 DESC;
 | Chicken  | 1   | 
 | Cheese  | 1   | 
 ---
+### 3. What was the most common exclusion?
+```python
+WITH cte_commonly_excluded AS (
+SELECT
+  order_id,
+  UNNEST(string_to_array(exclusions,','))::NUMERIC AS "excluded_toppings"
+FROM cleaned_customer_orders 
+)
+SELECT
+  topping_name,
+  COUNT(*) AS excluded_count
+FROM  cte_commonly_excluded AS t1 
+INNER JOIN pizza_runner.pizza_toppings AS t2
+ON t1.excluded_toppings = t2.topping_id
+GROUP BY 1
+ORDER BY 2 DESC;
+
+```
+> Output
+> 
+| topping_name | excluded_count | 
+| --------- | ------------- | 
+| Bacon  | 4   |
+| Chicken  | 1   | 
+| Cheese  | 1   | 
