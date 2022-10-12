@@ -1,5 +1,5 @@
 
-
+### 1.  What are the standard ingredients for each pizza?
 ```python
 DROP TABLE IF EXISTS cleaned_pizza_recipes;
 CREATE TEMP TABLE cleaned_pizza_recipes AS
