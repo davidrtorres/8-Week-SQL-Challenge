@@ -37,3 +37,29 @@ ORDER BY 1, 2;
 | 2  | 12   | Tomato Sauce | 
 -----
 
+### 2. What was the most commonly added extra?
+```python
+WITH cte_commonly_added_extra AS (
+SELECT
+  order_id,
+  UNNEST(string_to_array(extras,','))::NUMERIC AS "extra_toppings"
+FROM cleaned_customer_orders 
+)
+SELECT
+  topping_name,
+  COUNT(*) AS extras_count
+FROM  cte_commonly_added_extra AS t1 
+INNER JOIN pizza_runner.pizza_toppings AS t2
+ON t1.extra_toppings = t2.topping_id
+GROUP BY 1
+ORDER BY 2 DESC;
+
+```
+> Output
+> 
+| topping_name | extras_count | 
+| --------- | ------------- | 
+| Bacon  | 4   |
+| Chicken  | 1   | 
+| Cheese  | 1   | 
+---
