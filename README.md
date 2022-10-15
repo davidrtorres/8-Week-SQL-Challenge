@@ -1,1 +1,1 @@
-# SQL_Projects
+# 8-Week-SQL-Challenge
