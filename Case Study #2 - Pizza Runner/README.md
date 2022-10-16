@@ -15,4 +15,10 @@ Danny started by recruiting “runners” to deliver fresh pizza from Pizza Runn
   <img width="500" height="400" src="images/pizza_runner_erd.png">
 </p>
 
+This questions for this case study focus on the following areas: 
+* Pizza Metrics
+* Runner and Customer Experience
+* Ingredient Optimisation
+* Pricing and Ratings
+* Bonus DML Challenges (DML = Data Manipulation Language)
 
