@@ -16,7 +16,7 @@ Danny started by recruiting “runners” to deliver fresh pizza from Pizza Runn
 </p>
 
 The questions for this case study focus on the below areas.  Here are the links for the Questions and Solutions: 
-* Pizza Metrics
+* [Pizza Metrics]().
 * Runner and Customer Experience
 * Ingredient Optimisation
 * Pricing and Ratings
