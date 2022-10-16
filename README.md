@@ -7,5 +7,5 @@ The link to [Danny Ma's 8-Week-SQL-Challenge](https://8weeksqlchallenge.com/gett
 
 ## TABLE OF CONTENTS
 
-* [Case Study #2: Pizza Runner](https://8weeksqlchallenge.com/getting-started/).
+* [Case Study #2: Pizza Runner](https://github.com/davidrtorres/8-Week-SQL-Challenge/tree/main/Case%20Study%20%232%20-%20Pizza%20Runner).
 
