@@ -3,10 +3,6 @@
     <h1>A.   Pizza Metrics</h1>
 </p>
 
-<p align="center">
-  <img width="350" height="350" src="images/pizza_runner.png">
-</p>
-
 ---
 ## Cleaning Tables
 ###  customer_orders Table
