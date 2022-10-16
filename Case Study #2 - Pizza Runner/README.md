@@ -12,7 +12,7 @@ Danny started by recruiting “runners” to deliver fresh pizza from Pizza Runn
 
 ### Entity Relationship Diagram
 <p align="center">
-  <img width="450" height="500" src="images/pizza_runner_erd.png">
+  <img width="500" height="400" src="images/pizza_runner_erd.png">
 </p>
 
 
