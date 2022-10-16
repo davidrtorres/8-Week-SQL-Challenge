@@ -17,8 +17,8 @@ Danny started by recruiting “runners” to deliver fresh pizza from Pizza Runn
 
 The questions for this case study focus on the below areas.  Here are the links for the Questions and Solutions: 
 * [Pizza Metrics](https://github.com/davidrtorres/8-Week-SQL-Challenge/blob/main/Case%20Study%20%232%20-%20Pizza%20Runner/A.%20Pizza%20Metrics.md)
-* Runner and Customer Experience[Runner and Customer Experience]()
-* Ingredient Optimisation
+* [Runner and Customer Experience](https://github.com/davidrtorres/8-Week-SQL-Challenge/blob/main/Case%20Study%20%232%20-%20Pizza%20Runner/B.%20Runner%20and%20Customer%20Experience.md)
+* Ingredient Optimisation[Ingredient Optimization]()
 * Pricing and Ratings
 * Bonus DML Challenges (DML = Data Manipulation Language)
 
