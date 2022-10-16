@@ -1,4 +1,4 @@
-
+# Ingredient Optimization 
 ### 1.  What are the standard ingredients for each pizza?
 ```python
 DROP TABLE IF EXISTS cleaned_pizza_recipes;
