@@ -160,3 +160,74 @@ ORDER BY 2 DESC;
 | BBQ Sauce  | 1   | 
 
 -----
+
+
+
+```python
+WITH cte_customer_orders_toppings AS (
+SELECT
+  t1.order_id,
+  t1.customer_id,
+  t1.pizza_id AS pizza_id,
+  t1.order_time,
+  t2.topping_id AS topping_id
+FROM  cleaned_customer_orders AS t1
+LEFT JOIN split_toppings AS t2
+ON t1.pizza_id = t2.pizza_id
+),
+-- cte to split double integer values in exclusion
+cte_exclusions AS (
+SELECT
+  order_id,
+  customer_id,
+  pizza_id,
+  order_time,
+  UNNEST(string_to_array(exclusions,','))::NUMERIC AS exclusions
+FROM cleaned_customer_orders
+WHERE exclusions IS NOT NULL
+),
+--cte to split double integer values in extras
+cte_extras AS (
+SELECT
+  order_id,
+  customer_id,
+  pizza_id,
+  order_time,
+  UNNEST(string_to_array(extras,','))::NUMERIC AS extras
+FROM cleaned_customer_orders
+WHERE extras IS NOT NULL
+),
+-- union cte_customer_orders_toppings w/cte_exclusions and cte_extras
+cte_union_orders_extras_exclusions AS (
+  SELECT * FROM cte_customer_orders_toppings
+  UNION ALL
+  SELECT * FROM cte_exclusions
+  UNION ALL
+  SELECT * FROM cte_extras
+)
+SELECT
+  t2.topping_name,
+  COUNT(*) AS topping_count
+FROM cte_union_orders_extras_exclusions AS t1 
+INNER JOIN pizza_runner.pizza_toppings AS t2 
+ON t1.topping_id = t2.topping_id
+GROUP BY 1
+ORDER BY 2 DESC;
+
+```
+> Solution
+
+| topping_name | topping_count | 
+| --------- | ------------- | 
+| Cheese  | 19  |
+| Mushrooms  | 15   | 
+| Bacon  | 14   | 
+| BBQ Sauce  | 11  |
+| Chicken  | 11   | 
+| Pepperoni  | 10   | 
+| Salami  | 10  |
+| Beef  | 10  |
+| Tomato Sauce  | 4   | 
+| Onions  | 4   | 
+| Tomatoes  | 4   |
+| Peppers  | 4   |
