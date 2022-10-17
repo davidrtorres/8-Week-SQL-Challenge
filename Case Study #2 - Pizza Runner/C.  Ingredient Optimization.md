@@ -1,4 +1,36 @@
 # Ingredient Optimization 
+
+## Data Cleaning
+The pizza_recipes table needs to be cleaned because the toppings feature has multiple topping ids values which are grouped together on 2 rows instead if having a pizza_id and the corresponding topping id each on a separate row. 
+I using a table to clean the data so its easily accessible and used for any questions.
+```python
+DROP TABLE IF EXISTS split_toppings;
+CREATE TEMP TABLE split_toppings AS
+SELECT
+  pizza_id,
+  UNNEST(string_to_array(toppings,','))::NUMERIC AS topping_id
+FROM pizza_runner.pizza_recipes
+
+```
+> Output
+| pizza_id | topping_id |
+| --------- | ------------- |  
+| 1  | 1   | 
+| 1  | 2   |  
+| 1  | 3   | 
+| 1  | 4   |  
+| 1  | 5   | 
+| 1  | 6   |  
+| 1  | 8   |  
+| 1  | 10   |  
+| 2  | 4   |  
+| 2  | 6   |  
+| 2  | 7   |  
+| 2  | 9   |  
+| 2  | 11   |  
+| 2  | 12   |  
+-----
+
 ### 1.  What are the standard ingredients for each pizza?
 ```python
 DROP TABLE IF EXISTS cleaned_pizza_recipes;
