@@ -13,6 +13,7 @@ FROM pizza_runner.pizza_recipes
 
 ```
 > Output
+> 
 | pizza_id | topping_id |
 | --------- | ------------- |  
 | 1  | 1   | 
