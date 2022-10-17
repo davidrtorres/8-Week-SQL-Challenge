@@ -32,6 +32,8 @@ FROM pizza_runner.pizza_recipes
 | 2  | 12   |  
 -----
 
+## Questions and Solutions
+
 ### 1.  What are the standard ingredients for each pizza?
 ```python
 DROP TABLE IF EXISTS cleaned_pizza_recipes;
