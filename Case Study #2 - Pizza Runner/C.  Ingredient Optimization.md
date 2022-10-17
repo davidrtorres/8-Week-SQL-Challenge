@@ -1,7 +1,7 @@
 # Ingredient Optimization 
 
 ## Data Cleaning
-The pizza_recipes table needs to be cleaned because the toppings feature has multiple topping ids values which are grouped together on 2 rows instead if having a pizza_id and the corresponding topping id each on a separate row. 
+The pizza_recipes table needs to be cleaned because the toppings feature has multiple topping id values which are grouped together on 2 rows instead if having a pizza_id and the corresponding topping id each on a separate row. 
 I using a table to clean the data so its easily accessible and used for any questions.
 ```python
 DROP TABLE IF EXISTS split_toppings;
