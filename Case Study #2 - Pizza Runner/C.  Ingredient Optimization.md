@@ -160,7 +160,7 @@ ORDER BY 2 DESC;
 | BBQ Sauce  | 1   | 
 
 -----
-
+### 6. What is the total quantity of each ingredient used in all delivered pizzas sorted by most frequent first?
 
 
 ```python
