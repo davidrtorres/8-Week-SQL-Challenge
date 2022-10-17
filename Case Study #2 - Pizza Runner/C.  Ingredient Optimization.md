@@ -1,6 +1,41 @@
 # Ingredient Optimization 
 
 ## Data Cleaning
+The following tables needed to be cleaned:
+* The customer_orders table.
+* The columns exclusions and extras have blank values or the null values are strings and need to be converted to integers.  
+
+```python
+DROP TABLE IF EXISTS cleaned_customer_orders;
+CREATE TEMP TABLE cleaned_customer_orders AS
+SELECT
+  order_id,
+  customer_id,
+  pizza_id,
+  CASE 
+  WHEN exclusions LIKE '%null%' OR exclusions = '' THEN Null 
+  ELSE exclusions
+  END AS exclusions,
+  CASE
+  WHEN extras LIKE '%null%' OR extras = '' THEN Null 
+  ELSE extras
+  END AS extras,
+  order_time
+FROM pizza_runner.customer_orders;
+
+```
+> Output
+
+ order_id | customer_id | pizza_id  |  exclusions  | extras  | order_time  |
+| --------- | ------------- | ------------- |  ------------- | ------------- | ------------- |
+| 1  | 101   | 1 | null | null | 2021-01-01 18:05:02.000 |
+| 2  | 101   | 1| null | null | 2021-01-01 19:00:52.000 |
+| 3  | 102   | 1 | null | null | 2021-01-02 23:51:23.000 |
+| 3  | 102   | 2 | null | null | 2021-01-02 23:51:23.000 |
+| 4  | 103   | 1 | 4 | null | 2021-01-02 23:51:23.000 |
+
+-----
+
 The pizza_recipes table needs to be cleaned because the toppings feature has multiple topping id values which are grouped together on 2 rows instead if having a pizza_id and the corresponding topping id each on a separate row. 
 I using a table to clean the data so its easily accessible and used for any questions.
 ```python
