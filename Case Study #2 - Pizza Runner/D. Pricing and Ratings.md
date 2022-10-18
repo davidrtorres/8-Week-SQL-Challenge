@@ -1,5 +1,5 @@
 
-# Pricing and Ratings
+# D.  Pricing and Ratings
 --------
 ## Solutions
 
