@@ -2,7 +2,7 @@
 
 ## Solutions
 
-### 1. 1. If a Meat Lovers pizza pizza costs $12 and a Vegearian costs $10 and there were no charges for changes - how much money has Pizza Runner made so far if there are no delivery fees?
+### 1. If a Meat Lovers pizza pizza costs $12 and a Vegearian costs $10 and there were no charges for changes - how much money has Pizza Runner made so far if there are no delivery fees?
 
 ```python
 WITH cte_customer_order_pizza_names AS (
