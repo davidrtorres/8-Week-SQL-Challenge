@@ -49,4 +49,3 @@ FROM cte_pizza_prices;
 | sum |
 | ---- |
 | 138 |
------
