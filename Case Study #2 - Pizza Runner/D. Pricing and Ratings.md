@@ -85,3 +85,47 @@ FROM cte_total_revenue;
 > | --- |
 > | 142 |
 > -----
+
+### 3. The Pizza Runner team now wants to add an additional ratings system that allows customers to rate their runner, how would you design an additional table for this new dataset generate a schema for this new table and insert your own data for ratings for each successful customer order between 1 to 5.
+
+
+```python
+DROP TABLE IF EXISTS pizza_runner.runner_ratings;
+CREATE TABLE pizza_runner.runner_ratings (
+      order_id INT,
+      runner_id INT,
+      rating SMALLINT NOT NULL CHECK (rating between 1 and 5)
+)
+INSERT INTO pizza_runner.runner_ratings VALUES
+  (1, 1, 5),
+  (2, 1, 3),
+  (3, 1, 4),
+  (4, 2, 3),
+  (5, 3, 2),
+  (6, 3, 5),
+  (9, 2, 2),
+  (7, 2, 4),
+  (8, 2, 4),
+  (10, 1, 3)
+
+SELECT
+  *
+FROM pizza_runner.runner_ratings  
+
+```
+> Solution
+
+| order_id |runner_id |rating |
+| --- | --- | --- |
+| 1 | 1 |5 |
+| 2 | 1 |3 |
+| 3 | 1 |4 |
+| 4 | 2 |3 |
+| 5 | 3 |2 |
+| 6 | 3 |5|
+| 9 | 2 |2|
+| 7 | 2 |4|
+| 8 | 2 |4|
+| 10 | 1 |3|
+
+ -----
