@@ -33,6 +33,12 @@ FROM cte_pizza_price
 > -----
 ### 2. What if there was an additional $1 charge for any pizza extras?
 
+The following column was cleaned and functions were used to get the solution:
+* The column extras of table customer_orders was cleaned because there was blank values and null values were strings.
+* REGEXP_SPLIT_TO_ARRAY is a function splits a specified string into an array using a POSIX regular expression as the separator and returns the array.
+* CARDINALITY is function which returns the total number of individual elements in an array.
+* COALESCE is a function that returns the first argument that is not null.
+
 ```python
 WITH cust_orders_run_orders AS (
 SELECT
