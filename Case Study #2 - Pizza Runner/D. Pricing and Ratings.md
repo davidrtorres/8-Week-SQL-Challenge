@@ -129,3 +129,66 @@ FROM pizza_runner.runner_ratings
 | 10 | 1 |3|
 
  -----
+ ### 4. Using your newly generated table - can you join all of the information together to form a table which has the following information for successful deliveries?
+* customer_id
+* order_id
+* runner_id
+* rating
+* order_time
+* pickup_time
+* Time between order and pickup
+* Delivery duration
+* Speed
+
+
+```python 
+DROP TABLE IF EXISTS cust_orders_run_orders;
+CREATE TEMP TABLE cust_orders_run_orders AS
+SELECT  
+  t1.order_id AS order_id,
+  customer_id,
+  t2.runner_id,
+  t1.order_time AS order_time,
+  t2.pickup_time AS pickup_time,
+  UNNEST(REGEXP_MATCH(t2.distance, '[0-9]+')):: NUMERIC AS distance_km,
+  UNNEST(REGEXP_MATCH(t2.duration, '[0-9]+')):: NUMERIC AS delivery_duration_minutes
+FROM pizza_runner.customer_orders AS t1
+INNER JOIN pizza_runner.runner_orders AS t2
+ON t1.order_id = t2.order_id 
+WHERE distance <> 'null'
+
+WITH cte_runner_ratings_cust_orders AS (
+SELECT
+  *
+FROM cust_orders_run_orders AS t3  
+INNER JOIN pizza_runner.runner_ratings AS t4 
+ON t3.order_id = t4.order_id
+),
+cte_avg_pickup_time AS (
+SELECT
+  *,
+  DATE_PART('minute', pickup_time::TIMESTAMP - order_time::TIMESTAMP)::INTEGER AS time_between_order_pickup,
+  ROUND(distance_km / (delivery_duration_minutes/ 60),2) AS speed
+FROM cte_runner_ratings_cust_orders
+ORDER BY 1
+)
+SELECT
+  *
+FROM cte_avg_pickup_time;
+```
+> Solution
+
+| order_id |customer_id |runner_id |order_time |pickup_time |distance_km |delivery_duration_minutes |rating |time_between_order_pickup | speed |
+| --- | --- | --- |--- |--- |--- |--- |--- |--- |--- |
+| 1 | 101 |1 |2021-01-01 18:05:02.000 |2021-01-01 18:15:34 | 20 | 32| 5 | 10| 37.50 |
+|2| 101 | 1| 2021-01-01 19:00:52.000  | 2021-01-01 19:10:54 | 20 | 27 | 3 | 10 | 44.44 | 
+| 3 | 102 |1 |2021-01-02 23:51:23.000| 2021-01-03 00:12:37|13|20|4|21|39.00|
+| 3 | 102 |1 |2021-01-02 23:51:23.000|2021-01-03 00:12:37|13|20|4|21|39.00|
+| 4 | 103 |2|2021-01-04 13:23:46.000|2021-01-04 13:53:03|23|40|3|29|34.50
+| 4 | 103 |2|2021-01-04 13:23:46.000|2021-01-04 13:53:03|23|40|3|29|34.50
+| 4 | 103 |2|2021-01-04 13:23:46.000|2021-01-04 13:53:03|23|40|3|29|34.50|
+| 5 | 104 |3|2021-01-08 21:00:29.000|2021-01-08 21:10:57|10|15|2|10|40.00|
+| 7 | 105 |2|2021-01-08 21:20:29.000|2021-01-08 21:30:45|25|25|4|10|60.00
+| 8 | 102 |2|2021-01-09 23:54:33.000|2021-01-10 00:15:02|23|15|4|20.00|
+| 10 | 104 |1|2021-01-11 18:34:49.000|2021-01-11 18:50:20|10|10|3|15|60.00|
+| 10 | 104 |1|2021-01-11 18:34:49.000|2021-01-11 18:50:20|10|10|3|15|60.00|
