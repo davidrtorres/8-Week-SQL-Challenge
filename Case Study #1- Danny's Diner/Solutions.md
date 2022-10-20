@@ -98,7 +98,7 @@ ORDER BY item_purchased_count DESC;
 > Output
 
 |product_name |item_purchased_count|
-|--|---|---|
+|--|---|
 |ramen | 8|
 |curry | 4|
 |sushi |  3|
