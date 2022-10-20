@@ -167,10 +167,13 @@ FROM cte_purchase_membership
 WHERE purchase_after_join =1;
 
 ```
-Output
-<p align="left">
-  <img width="400" height="100" src="images/six.png">
-</p>
+> Output
+
+|customer_id |product_name|order_date|purchase_after_join |
+|--|---|---|---|
+|A| curry|2021-01-07| 1|
+|B | sushi|2021-01-11 | 1|
+
 
 ### 7. Which item was purchased just before the customer became a member?
 ```
