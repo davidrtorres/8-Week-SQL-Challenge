@@ -32,6 +32,11 @@ This dataset concerns the customer loyalty program and includes the customer_id 
   <img width="350" height="150" src="images/members.png">
 </p>
 
+## Entity Relationship Diagram 
+<p align="center">
+  <img width="350" height="350" src="images/erd_1.png">
+</p>
+
 ## Case Study Questions
 1. What is the total amount each customer spent at the restaurant?<br> 
 2. How many days has each customer visited the restaurant?<br>
