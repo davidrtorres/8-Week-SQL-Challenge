@@ -23,7 +23,7 @@ Output
 
 ### 1. What is the total amount each customer spent at the restaurant?
 
-```
+```python
 SELECT
   customer_id,
   SUM(price)
@@ -31,10 +31,13 @@ FROM dannys_diner_complete
 GROUP BY customer_id
 ORDER BY customer_id;
 ```
-Output
-<p align="left">
-  <img width="200" height="100" src="images/one.png">
-</p>
+> Output
+|customer_id |sum|
+|--|---|
+|A | 76|
+|B | 74|
+|C | 36|
+
 
 ### 2. How many days has each customer visited the restaurant?
 ```
