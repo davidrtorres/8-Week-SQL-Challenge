@@ -8,7 +8,7 @@
 
 ## Problem Statement
 Danny wants to use the data to answer questions about his customers, especially about their visting patterns, how much money they've spent and also which items are their favorite. Daniel feels that this information will help him deliver a better and more personalized experience for his customers.  Danny also plans to use these insights to help decide whether he should expand the customer loyalty program.  Danny has asked me to write SQL queries to answer the questions.
-Danny was provided me with 3 datasets: sales, menu, members
+Danny was provided me with 3 datasets: sales, menu, members.
 
 ## Dataset
 Danny has provided us with 3 datasets for this case study.
