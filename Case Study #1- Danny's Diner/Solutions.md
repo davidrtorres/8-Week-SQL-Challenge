@@ -97,14 +97,14 @@ ORDER BY item_purchased_count DESC;
 ```
 > Output
 
-|product_name |product_name|category_ranking|
+|product_name |item_purchased_count|
 |--|---|---|
 |ramen | 8|
 |curry | 4|
 |sushi |  3|
 
 ### 5. Which item was the most popular for each customer?
-```
+```python
 WITH cte_popular_item AS (
 SELECT
   customer_id,
@@ -121,13 +121,14 @@ SELECT
   times_purchased
 FROM cte_popular_item
 WHERE category_ranking = 1
-
-
 ```
-Output
-<p align="left">
-  <img width="300" height="100" src="images/five.png">
-</p>
+> Output
+
+|customer_id |product_name|times_purchased|
+|--|---|---|
+|A| ramen|3|
+|B | sushi|2|
+|C |  ramen| 3|
 
 ### 6. Which item was purchased first by the customer after they became a member?
 ```
