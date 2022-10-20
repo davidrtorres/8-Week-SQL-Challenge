@@ -225,7 +225,7 @@ WHERE purchase = 1;
 
 
 ### 8. What is the total items and amount spent for each member before they became a member?
-```
+```python
 DROP TABLE IF EXISTS purchase_member;
 CREATE TEMP TABLE purchase_member AS (
 SELECT
@@ -262,10 +262,14 @@ FROM cte_purchase_member
 GROUP BY customer_id;
 
 ```
-Output
-<p align="left">
-  <img width="350" height="100" src="images/eight.png">
-</p>
+> Output
+
+|customer_id |total_spent|order_date|
+|--|---|---|
+|A | 25| 2| 
+|B | 40| 3|
+
+
 
 ### 9. If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
 
