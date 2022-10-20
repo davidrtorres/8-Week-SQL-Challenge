@@ -45,6 +45,6 @@ This dataset concerns the customer loyalty program and includes the customer_id 
 10.In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer A and B have at the end of January?  
 
 ## Solutions
-[Case Study #1 Solutions](https://github.com/davidrtorres/8-Week-SQL-Challenge/blob/main/Case%20Study%20%231-%20Danny's%20Diner/Solutions.md)
+[Case Study #1: Solutions](https://github.com/davidrtorres/8-Week-SQL-Challenge/blob/main/Case%20Study%20%231-%20Danny's%20Diner/Solutions.md)
        
 
