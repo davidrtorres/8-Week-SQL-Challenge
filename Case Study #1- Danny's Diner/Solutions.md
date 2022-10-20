@@ -273,7 +273,7 @@ GROUP BY customer_id;
 
 ### 9. If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
 
-```
+```python
 DROP TABLE IF EXISTS customer_points;
 CREATE TEMP TABLE customer_points AS (
 SELECT
@@ -306,10 +306,13 @@ SELECT
 FROM cte_customer_points_total
 ORDER BY customer_id;
 ```
-Output
-<p align="left">
-  <img width="350" height="100" src="images/nine.png">
-</p>
+> Output
+
+|customer_id |total_points|
+|--|---|
+|A | 860|  
+|B | 940| 
+
 
 ### 10. In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer A and B have at the end of January?
 ```
