@@ -32,6 +32,7 @@ GROUP BY customer_id
 ORDER BY customer_id;
 ```
 > Output
+> 
 |customer_id |sum|
 |--|---|
 |A | 76|
