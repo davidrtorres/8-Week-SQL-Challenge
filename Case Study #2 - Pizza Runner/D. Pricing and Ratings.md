@@ -219,8 +219,6 @@ SELECT
   DISTINCT distance_km
 FROM cust_orders_run_orders
 
-SELECT * FROM cleaned_distance
-
 SELECT
   SUM(revenue) AS revenue_after_runner
 FROM 
