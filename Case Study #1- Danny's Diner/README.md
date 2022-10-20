@@ -11,7 +11,7 @@ Danny wants to use the data to answer questions about his customers, especially 
 Danny was provided me with 3 datasets: sales, menu, members.
 
 ## Dataset
-Danny has provided us with 3 datasets for this case study.
+Danny has provided us with 3 datasets for this case study: sales, menu, members.
 
 ### sales
 This dataset includes all the customer_id purchases, the corresponding order_date and the product id of each purchase.
