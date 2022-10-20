@@ -176,7 +176,7 @@ WHERE purchase_after_join =1;
 
 
 ### 7. Which item was purchased just before the customer became a member?
-```
+```python
 DROP TABLE IF EXISTS purchase_before_member;
 CREATE TEMP TABLE purchase_before_member AS (
 SELECT
@@ -218,7 +218,7 @@ WHERE purchase = 1;
 > Output
 
 |customer_id |product_name|order_date|
-|--|---|---|---|
+|--|---|---|
 |A| sushi|2021-01-01| 1|
 |A | curry| | 2021-01-01
 |B | sushi| | 2021-01-04|
