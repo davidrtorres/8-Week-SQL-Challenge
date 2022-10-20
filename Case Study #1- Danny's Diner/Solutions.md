@@ -41,7 +41,7 @@ ORDER BY customer_id;
 
 
 ### 2. How many days has each customer visited the restaurant?
-```
+```python
 SELECT
   customer_id,
   COUNT(DISTINCT order_date) 
@@ -49,10 +49,14 @@ FROM dannys_diner_complete
 GROUP BY customer_id
 ORDER BY customer_id;
 ```
-Output
-<p align="left">
-  <img width="200" height="100" src="images/two.png">
-</p>
+> Output
+
+|customer_id |count|
+|--|---|
+|A | 4|
+|B | 6|
+|C | 2|
+
 
 ### 3. What was the first item from the menu purchased by each customer?
 ```
