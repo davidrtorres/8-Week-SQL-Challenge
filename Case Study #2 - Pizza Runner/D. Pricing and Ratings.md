@@ -192,3 +192,52 @@ FROM cte_avg_pickup_time;
 | 8 | 102 |2|2021-01-09 23:54:33.000|2021-01-10 00:15:02|23|15|4|20.00|
 | 10 | 104 |1|2021-01-11 18:34:49.000|2021-01-11 18:50:20|10|10|3|15|60.00|
 | 10 | 104 |1|2021-01-11 18:34:49.000|2021-01-11 18:50:20|10|10|3|15|60.00|
+
+----
+*** 5. If a Meat Lovers pizza was $12 and Vegetarian $10 fixed prices with no cost for extras and each runner is paid $0.30 per kilometre traveled - how much money does Pizza Runner have left over after these deliveries?
+
+```python
+DROP TABLE IF EXISTS cust_orders_run_orders;
+CREATE TEMP TABLE cust_orders_run_orders AS
+SELECT  
+  t1.order_id AS order_id,
+  customer_id,
+  CASE 
+  WHEN t1.pizza_id = 1 THEN 12
+  ELSE 10
+  END AS pizza_prices,
+  t2.runner_id,
+  UNNEST(REGEXP_MATCH(t2.distance, '[0-9]+')):: NUMERIC AS distance_km
+FROM pizza_runner.customer_orders AS t1
+INNER JOIN pizza_runner.runner_orders AS t2
+ON t1.order_id = t2.order_id 
+WHERE distance <> 'null'
+
+DROP TABLE IF EXISTS cleaned_distance;
+CREATE TEMP TABLE cleaned_distance AS
+SELECT
+  DISTINCT distance_km
+FROM cust_orders_run_orders
+
+SELECT * FROM cleaned_distance
+
+SELECT
+  SUM(revenue) AS revenue_after_runner
+FROM 
+  (
+    SELECT
+      SUM(pizza_prices) AS revenue
+    FROM cust_orders_run_orders
+    UNION
+    SELECT
+      SUM(-1 * distance_km * 0.3) AS revenue
+    FROM cleaned_distance
+      
+  ) AS revenue_after_pay_runner
+
+```
+> Solution
+
+| revenue_after_runner |
+|--- |
+| 110.7 | 
