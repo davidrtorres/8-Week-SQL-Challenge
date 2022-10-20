@@ -34,7 +34,7 @@ This dataset concerns the customer loyalty program and includes the customer_id 
 
 ## Entity Relationship Diagram 
 <p align="center">
-  <img width="350" height="350" src="images/erd_1.png">
+  <img width="350" height="350" src="images/erd_1.jpg">
 </p>
 
 ## Case Study Questions
