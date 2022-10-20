@@ -194,7 +194,7 @@ FROM cte_avg_pickup_time;
 | 10 | 104 |1|2021-01-11 18:34:49.000|2021-01-11 18:50:20|10|10|3|15|60.00|
 
 ----
-*** 5. If a Meat Lovers pizza was $12 and Vegetarian $10 fixed prices with no cost for extras and each runner is paid $0.30 per kilometre traveled - how much money does Pizza Runner have left over after these deliveries?
+### 5. If a Meat Lovers pizza was $12 and Vegetarian $10 fixed prices with no cost for extras and each runner is paid $0.30 per kilometre traveled - how much money does Pizza Runner have left over after these deliveries?
 
 ```python
 DROP TABLE IF EXISTS cust_orders_run_orders;
