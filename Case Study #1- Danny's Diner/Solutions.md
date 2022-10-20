@@ -131,7 +131,7 @@ WHERE category_ranking = 1
 |C |  ramen| 3|
 
 ### 6. Which item was purchased first by the customer after they became a member?
-```
+```python
 DROP TABLE IF EXISTS membership_purchase;
 CREATE TEMP TABLE membership_purchase AS (
 SELECT
@@ -215,10 +215,14 @@ SELECT
 FROM cte_purchase_before_member
 WHERE purchase = 1;
 ```
-Output
-<p align="left">
-  <img width="400" height="100" src="images/seven.png">
-</p>
+> Output
+
+|customer_id |product_name|order_date|
+|--|---|---|---|
+|A| sushi|2021-01-01| 1|
+|A | curry| | 2021-01-01
+|B | sushi| | 2021-01-04|
+
 
 ### 8. What is the total items and amount spent for each member before they became a member?
 ```
