@@ -77,10 +77,14 @@ SELECT
 FROM cte_first_purchase  
 WHERE category_ranking =1
 ```
-Output
-<p align="left">
-  <img width="300" height="100" src="images/three.png">
-</p>
+> Output
+
+|customer_id |product_name|category_ranking|
+|--|---|---|
+|A | curry| 1|
+|B | curry| 1|
+|C | ramen| 1|
+
 
 ### 4. What is the most purchased item on the menu and how many times was it purchased by all customers?
 ```
