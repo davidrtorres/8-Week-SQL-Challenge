@@ -87,7 +87,7 @@ WHERE category_ranking =1
 
 
 ### 4. What is the most purchased item on the menu and how many times was it purchased by all customers?
-```
+```python
 SELECT
   product_name,
   COUNT(*) AS item_purchased_count
@@ -95,10 +95,13 @@ FROM dannys_diner_complete
 GROUP BY product_name
 ORDER BY item_purchased_count DESC;
 ```
-Output
-<p align="left">
-  <img width="300" height="100" src="images/four.png">
-</p>
+> Output
+
+|product_name |product_name|category_ranking|
+|--|---|---|
+|ramen | 8|
+|curry | 4|
+|sushi |  3|
 
 ### 5. Which item was the most popular for each customer?
 ```
