@@ -59,7 +59,7 @@ ORDER BY customer_id;
 
 
 ### 3. What was the first item from the menu purchased by each customer?
-```
+```python
 WITH cte_first_purchase AS (
 SELECT
   customer_id, 
