@@ -219,9 +219,9 @@ WHERE purchase = 1;
 
 |customer_id |product_name|order_date|
 |--|---|---|
-|A| sushi|2021-01-01| 1|
-|A | curry| | 2021-01-01
-|B | sushi| | 2021-01-04|
+|A | sushi| 2021-01-01| 
+|A | curry| 2021-01-01|
+|B | sushi| 2021-01-04|
 
 
 ### 8. What is the total items and amount spent for each member before they became a member?
