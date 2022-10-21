@@ -19,3 +19,9 @@ Danny provided us with these datasets: plans and subscriptions.
 <p align="center">
   <img width="350" height="350" src="images/erd_3.png">
 </p>
+
+## Case Study Questions
+A. Customer Journey
+B. Data Analysis Questions
+C. Challenge Payment Question
+D. Outside The Box Questions
