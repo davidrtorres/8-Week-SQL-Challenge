@@ -68,3 +68,17 @@ GROUP BY 1
 | pro monthly | 539 |
 | basic monthly | 546 |
 ----
+
+### What is the time period that subscription service has been operating.
+```python
+SELECT
+  MIN(start_date) AS starting_records,
+  MAX(start_date) AS ending_records
+FROM subscriptions_plans
+```
+> Solution
+
+|starting_records  |ending_records |
+> |---|
+> |2020-01-01 | 2021-04-30|
+> -----
