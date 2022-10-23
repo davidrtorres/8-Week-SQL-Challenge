@@ -35,5 +35,6 @@ The below output is limited to 10 rows.
 | 5 | 1 |basic monthly|2020-08-10|9.90|
 
 
+## Case Study Questions and Solutions
 
 ### Write a brief description about the customers' onboarding journey.
