@@ -79,6 +79,36 @@ FROM subscriptions_plans
 > Solution
 
 |starting_records  |ending_records |
-> |---|
-> |2020-01-01 | 2021-04-30|
+|---|---|
+|2020-01-01 | 2021-04-30|
+> 
 > -----
+> 
+> ### What is the monthly distribution of the trial subscriptions? 
+
+```python
+SELECT
+  DATE_TRUNC('month', start_date)::DATE AS month,
+  COUNT(plan_name) AS number_enrolled
+FROM subscriptions_plans  
+WHERE plan_name = 'trial'
+GROUP BY 1
+```
+
+> Solution
+
+|month  |number_enrolled |
+|---|---|
+|2020-01-01|88|
+|2020-02-01|68|
+|2020-03-01|94|
+|2020-04-01|81|
+|2020-05-01|88|
+|2020-06-01|79|
+|2020-07-01|89|
+|2020-08-01|88|
+|2020-09-01|87|
+|2020-10-01|79|
+|2020-11-01|75|
+|2020-12-01|84|
+-----
