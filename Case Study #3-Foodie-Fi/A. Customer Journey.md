@@ -112,3 +112,30 @@ GROUP BY 1
 |2020-11-01|75|
 |2020-12-01|84|
 -----
+### How many customers have had monthly subscriptions in comparison to pro monthly and what percentage are these of the plan_name? 
+
+```python
+WITH my_sample AS (
+SELECT
+  plan_name,
+  COUNT(customer_id) AS number_enrolled_montlhy,
+  ROUND(100 * COUNT(DISTINCT customer_id)::NUMERIC / SUM(COUNT(DISTINCT customer_id)) OVER(),
+    2) AS percentage
+FROM subscriptions_plans
+GROUP BY 1
+)
+SELECT
+  plan_name,
+  number_enrolled_montlhy,
+  percentage
+FROM my_sample
+WHERE plan_name = 'basic monthly' OR  plan_name = 'pro monthly'
+```
+> Solution
+
+|plan_name  |customer_count |percentage |
+|---|---|-----|
+|basic monthly|546| 20.60|
+|pro monthly|539|20.34|
+
+-----
