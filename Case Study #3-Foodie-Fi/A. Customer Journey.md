@@ -38,3 +38,15 @@ The below output is limited to 10 rows.
 ## Case Study Questions and Solutions
 
 ### Write a brief description about the customers' onboarding journey.
+
+### How many customers has Food-fi had?
+```python
+SELECT 
+  COUNT(DISTINCT customer_id) AS customer_count
+FROM subscriptions_plans
+```
+> Solution
+> |customer_count   |
+> |---|
+> |1000   |
+> ---
