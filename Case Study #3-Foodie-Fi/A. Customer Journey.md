@@ -139,3 +139,24 @@ WHERE plan_name = 'basic monthly' OR  plan_name = 'pro monthly'
 |pro monthly|539|20.34|
 
 -----
+### For the year end review, what is the breakdown of all plan_names and percentages up to 2020-12-31?
+```python
+SELECT
+  plan_name,
+  COUNT(customer_id) AS customers_count,
+  ROUND(100 * COUNT(DISTINCT customer_id)::NUMERIC / SUM(COUNT(DISTINCT customer_id)) OVER(),
+    2) AS percentage
+FROM subscriptions_plans
+WHERE start_date <= '2020-12-31'
+GROUP BY 1
+```
+> Solution
+> 
+|plan_name  |customer_count |percentage |
+|---|---|-----|
+|basic monthly|538| 21.98|
+|churn|236|9.64|
+|pro annual|195|7.97|
+|pro monthly|479|19.57|
+|trial|1000|40.85|
+----
