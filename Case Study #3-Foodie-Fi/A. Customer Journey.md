@@ -50,3 +50,21 @@ FROM subscriptions_plans
 > |---|
 > |1000   |
 > ---
+> ### How many plans does Food-fi offer and how many customers are enrolled in each?
+ ```python
+SELECT
+  plan_name,
+  COUNT(customer_id) AS number_cust_enrolled
+FROM subscriptions_plans
+GROUP BY 1
+```
+> Solution
+
+| plan_name | number_cust_enrolled |
+| --- | --- |
+| pro annual | 258 |
+|trial | 1000 |   
+| churn | 307 |
+| pro monthly | 539 |
+| basic monthly | 546 |
+----
