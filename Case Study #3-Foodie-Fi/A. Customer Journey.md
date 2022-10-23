@@ -17,9 +17,8 @@ INNER JOIN foodie_fi.plans AS t2
 ON t1.plan_id = t2.plan_id
 ORDER BY customer_id;
 
-The below output is limited to 10 rows.
-
 ```
+The below output is limited to 10 rows.
 > Output
 
 | customer_id |plan_id |plan_name |start_date |price |
