@@ -69,7 +69,7 @@ GROUP BY 1
 | basic monthly | 546 |
 ----
 
-### What is the time period that subscription service has been operating.
+### What is the time period that the subscription service has been operating.
 ```python
 SELECT
   MIN(start_date) AS starting_records,
