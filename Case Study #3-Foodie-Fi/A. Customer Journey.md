@@ -50,6 +50,7 @@ FROM subscriptions_plans
 > |---|
 > |1000   |
 > ---
+> 
 > ###  2. What is the monthly distribution of trial plan start_date values for our dataset - use the start of the month as the group by value
  ```python
 SELECT
