@@ -39,7 +39,7 @@ The below output is limited to 10 rows.
 
 ### Write a brief description about the customers' onboarding journey.
 
-### How many customers has Foodie-Fi ever had?
+### 1. How many customers has Foodie-Fi ever had?
 ```python
 SELECT 
   COUNT(DISTINCT customer_id) AS total_customer_count
@@ -51,7 +51,7 @@ FROM subscriptions_plans
 > |1000   |
 > ---
 > 
-> ###  2. What is the monthly distribution of trial plan start_date values for our dataset - use the start of the month as the group by value
+###  2. What is the monthly distribution of trial plan start_date values for our dataset - use the start of the month as the group by value
  ```python
 SELECT
   DATE_TRUNC('month', start_date)::DATE AS month,
@@ -93,7 +93,8 @@ FROM subscriptions_plans
 > 
 > -----
 > 
-> ### What is the monthly distribution of the trial subscriptions? 
+
+### What is the monthly distribution of the trial subscriptions? 
 
 ```python
 SELECT
