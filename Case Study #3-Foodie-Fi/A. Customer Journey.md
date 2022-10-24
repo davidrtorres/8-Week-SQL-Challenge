@@ -104,14 +104,22 @@ GROUP BY 1
 
 
 ```python
-
+SELECT
+  SUM(
+  CASE
+  WHEN plan_id= 4 THEN 1
+  ELSE 0
+  END) AS churn_customers, 
+  ROUND(
+    100 * SUM(CASE WHEN plan_id= 4 THEN 1 ELSE 0 END)::NUMERIC / COUNT(DISTINCT customer_id),1)
+    AS percentage
+FROM subscriptions_plans
 ```
 > Solution
 
-|plan_name  |customer_count |percentage |
+|churn_customers  |percentage |
 |---|---|-----|
-|basic monthly|546| 20.60|
-|pro monthly|539|20.34|
+|307| 30.7|
 
 -----
 ### For the year end review, what is the breakdown of all plan_names and percentages up to 2020-12-31?
