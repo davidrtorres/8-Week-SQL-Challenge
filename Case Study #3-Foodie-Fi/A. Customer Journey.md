@@ -39,34 +39,42 @@ The below output is limited to 10 rows.
 
 ### Write a brief description about the customers' onboarding journey.
 
-### How many customers has Food-fi had?
+### How many customers has Foodie-Fi ever had?
 ```python
 SELECT 
-  COUNT(DISTINCT customer_id) AS customer_count
+  COUNT(DISTINCT customer_id) AS total_customer_count
 FROM subscriptions_plans
 ```
 > Solution
-> |customer_count   |
+> |total_customer_count   |
 > |---|
 > |1000   |
 > ---
-> ### How many plans does Food-fi offer and how many customers are enrolled in each?
+> ###  2. What is the monthly distribution of trial plan start_date values for our dataset - use the start of the month as the group by value
  ```python
 SELECT
-  plan_name,
-  COUNT(customer_id) AS number_cust_enrolled
+  DATE_TRUNC('month', start_date)::DATE AS month,
+  COUNT(customer_id) AS monthly_trial
 FROM subscriptions_plans
+WHERE plan_name = 'trial'
 GROUP BY 1
 ```
 > Solution
 
-| plan_name | number_cust_enrolled |
+| month | monthly_trial |
 | --- | --- |
-| pro annual | 258 |
-|trial | 1000 |   
-| churn | 307 |
-| pro monthly | 539 |
-| basic monthly | 546 |
+| 2020-01-01 | 88 |
+|2020-02-01 | 68|
+| 2020-03-01 | 94 |
+| 2020-04-01 | 81 |
+| 2020-05-01 | 88 |
+| 2020-06-01 | 79 |
+| 2020-07-01 | 89 |
+| 2020-08-01 | 88 |
+| 2020-09-01 | 87 |
+| 2020-10-01 | 79 |
+| 2020-11-01 | 75 |
+| 2020-12-01 | 84 |
 ----
 
 ### What is the time period that the subscription service has been operating.
