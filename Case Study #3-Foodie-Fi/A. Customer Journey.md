@@ -50,7 +50,7 @@ FROM subscriptions_plans
 > |---|
 > |1000   |
 > ---
-> 
+
 ###  2. What is the monthly distribution of trial plan start_date values for our dataset - use the start of the month as the group by value
  ```python
 SELECT
@@ -78,68 +78,33 @@ GROUP BY 1
 | 2020-12-01 | 84 |
 ----
 
-### What is the time period that the subscription service has been operating.
+### 3. What plan start_date values occur after the year 2020 for our dataset? Show the breakdown by count of events for each plan_name
+
+
 ```python
 SELECT
-  MIN(start_date) AS starting_records,
-  MAX(start_date) AS ending_records
+  plan_name,
+  COUNT(customer_id) AS count_after_2020
 FROM subscriptions_plans
-```
-> Solution
-
-|starting_records  |ending_records |
-|---|---|
-|2020-01-01 | 2021-04-30|
-> 
-> -----
-> 
-
-### What is the monthly distribution of the trial subscriptions? 
-
-```python
-SELECT
-  DATE_TRUNC('month', start_date)::DATE AS month,
-  COUNT(plan_name) AS number_enrolled
-FROM subscriptions_plans  
-WHERE plan_name = 'trial'
+WHERE start_date > '2020-12-31'
 GROUP BY 1
 ```
 
 > Solution
 
-|month  |number_enrolled |
+|plan_name  |count_after_2020 |
 |---|---|
-|2020-01-01|88|
-|2020-02-01|68|
-|2020-03-01|94|
-|2020-04-01|81|
-|2020-05-01|88|
-|2020-06-01|79|
-|2020-07-01|89|
-|2020-08-01|88|
-|2020-09-01|87|
-|2020-10-01|79|
-|2020-11-01|75|
-|2020-12-01|84|
+|pro annual|63|
+|churn|71|
+|pro monthly|60|
+|basic monthly|8|
+
 -----
-### How many customers have had monthly subscriptions in comparison to pro monthly and what percentage are these of the plan_name? 
+### 4. What is the customer count and percentage of customers who have churned rounded to 1 decimal place?
+
 
 ```python
-WITH my_sample AS (
-SELECT
-  plan_name,
-  COUNT(customer_id) AS number_enrolled_montlhy,
-  ROUND(100 * COUNT(DISTINCT customer_id)::NUMERIC / SUM(COUNT(DISTINCT customer_id)) OVER(),
-    2) AS percentage
-FROM subscriptions_plans
-GROUP BY 1
-)
-SELECT
-  plan_name,
-  number_enrolled_montlhy,
-  percentage
-FROM my_sample
-WHERE plan_name = 'basic monthly' OR  plan_name = 'pro monthly'
+
 ```
 > Solution
 
