@@ -118,7 +118,7 @@ FROM subscriptions_plans
 > Solution
 
 |churn_customers  |percentage |
-|---|---|-----|
+|---|---|
 |307| 30.7|
 
 -----
