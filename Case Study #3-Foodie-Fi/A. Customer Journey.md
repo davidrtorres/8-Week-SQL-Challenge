@@ -122,24 +122,42 @@ FROM subscriptions_plans
 |307| 30.7|
 
 -----
-### For the year end review, what is the breakdown of all plan_names and percentages up to 2020-12-31?
+### 5. How many customers have churned straight after their initial free trial - what percentage is this rounded to the nearest whole number?
 ```python
+WITH cte_churn AS(
+  SELECT
+    customer_id,
+    plan_id,
+    ROW_NUMBER() OVER(
+      PARTITION BY customer_id
+      ORDER BY start_date
+    ) AS rank
+  FROM
+    foodie_fi.subscriptions
+)
 SELECT
-  plan_name,
-  COUNT(customer_id) AS customers_count,
-  ROUND(100 * COUNT(DISTINCT customer_id)::NUMERIC / SUM(COUNT(DISTINCT customer_id)) OVER(),
-    2) AS percentage
-FROM subscriptions_plans
-WHERE start_date <= '2020-12-31'
-GROUP BY 1
+  SUM(
+    CASE
+      WHEN plan_id = 4
+      AND rank = 2 THEN 1
+      ELSE 0
+    END
+  ) AS frequency,
+  ROUND(
+    100 * SUM(
+      CASE
+        WHEN plan_id = 4
+        AND rank = 2 THEN 1
+        ELSE 0
+      END
+    ) / SUM(COUNT(DISTINCT customer_id)) OVER(),
+    1
+  ) AS percentage
+FROM cte_churn
 ```
 > Solution
 > 
-|plan_name  |customer_count |percentage |
-|---|---|-----|
-|basic monthly|538| 21.98|
-|churn|236|9.64|
-|pro annual|195|7.97|
-|pro monthly|479|19.57|
-|trial|1000|40.85|
+|frequency  |percentage |
+|---|---|
+|92|9.2| 
 ----
