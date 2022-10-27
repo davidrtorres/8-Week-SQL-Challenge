@@ -195,3 +195,19 @@ ORDER BY plans.plan_id;
 |3|pro annual|37 | 4 |
 |4|churn|92 | 9|
 ------
+### 8. How many customers have upgraded to an annual plan in 2020?
+
+```python
+SELECT
+  plan_name,
+  COUNT(DISTINCT customer_id) annual_customer_count
+FROM subscriptions_plans
+WHERE start_date BETWEEN '2020-01-01' AND '2020-12-31' AND 
+PLAN_ID = 3
+GROUP BY plan_name
+```
+> Solution
+> 
+|plan_name  |annual_customer_count |
+|---|---|
+|pro annual|195| 
