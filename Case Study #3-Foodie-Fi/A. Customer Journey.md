@@ -243,3 +243,50 @@ ON t1.customer_id = t2.customer_id
 |105|
 
 ------
+### 10. Can you further breakdown this average value into 30 day periods (i.e. 0-30 days, 31-60 days etc)
+```python
+WITH cte_trial_dates AS (
+SELECT
+  customer_id,
+  plan_id,
+  start_date AS trial_date
+FROM foodie_fi.subscriptions
+WHERE plan_id = 0
+),
+cte_annual_dates AS (
+SELECT
+  customer_id,
+  start_date AS annual_date
+FROM foodie_fi.subscriptions
+WHERE plan_id = 3
+),
+cte_days_bin AS (
+SELECT 
+  WIDTH_bucket(t2.annual_date - t1.trial_date,0,360,12) AS days_bucket
+FROM cte_trial_dates AS t1 
+INNER JOIN cte_annual_dates AS t2 
+ON t1.customer_id = t2.customer_id
+)
+SELECT
+  ((days_bucket - 1)*30 || '-' || (days_bucket)*30) AS "30-day-range", 
+  COUNT(*) AS Count 
+FROM cte_days_bin
+GROUP BY days_bucket
+ORDER BY days_bucket
+```
+> Solution
+ 
+|30-day-range | count|
+|---|---|
+|0-30|48 |
+|30-60|25 | 
+|60-90|33 | 
+|90-120|35 |
+|120-150|43 |
+|150-180|35 |  
+|180-210|27 |   
+|210-240|4 |  
+|240-270|5 |    
+|270-300|1 |  
+|300-330|1|
+|330-360|1|
