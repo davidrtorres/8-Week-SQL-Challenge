@@ -200,7 +200,7 @@ ORDER BY plans.plan_id;
 ```python
 SELECT
   plan_name,
-  COUNT(DISTINCT customer_id) annual_customer_count
+  COUNT(DISTINCT customer_id) AS annual_customer_count
 FROM subscriptions_plans
 WHERE start_date BETWEEN '2020-01-01' AND '2020-12-31' AND 
 PLAN_ID = 3
@@ -211,3 +211,35 @@ GROUP BY plan_name
 |plan_name  |annual_customer_count |
 |---|---|
 |pro annual|195| 
+
+------
+### 9. How many days on average does it take for a customer to an annual plan from the day they join Foodie-Fi?
+```python
+WITH cte_trial_dates AS (
+SELECT
+  customer_id,
+  plan_id,
+  start_date AS trial_date
+FROM foodie_fi.subscriptions
+WHERE plan_id = 0
+),
+cte_annual_dates AS (
+SELECT
+  customer_id,
+  start_date AS annual_date
+FROM foodie_fi.subscriptions
+WHERE plan_id = 3
+)
+SELECT 
+  ROUND(AVG(DATE_PART('DAY', t2.annual_date::TIMESTAMP - t1.trial_date::TIMESTAMP)::INTEGER),0) AS avg_days
+FROM cte_trial_dates AS t1 
+INNER JOIN cte_annual_dates AS t2 
+ON t1.customer_id = t2.customer_id
+```
+>Solution
+
+|avg_days  |
+|---|
+|105|
+
+------
